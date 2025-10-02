@@ -14,7 +14,7 @@ Se registrará:
 
 El proyecto contará con una interfaz web hecha con **HTML, CSS y JavaScript**.  
 
-### Opcional / Extra
+## Opcional / Extra
 
 - Una vez desarrollada la base, con ayuda de **n8n**, enviaremos las capturas a un canal de mensajería (por ejemplo, Discord).  
 
