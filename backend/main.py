@@ -1,24 +1,28 @@
 import os
 from flask import Flask, request, jsonify
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+from bson.errors import InvalidId
 
 URL_MONGO = os.getenv("URL_MONGO")
 
-PORT_API = os.getenv("PORT_API")
-
-WEB_PORT = os.getenv("WEB_PORT")
-
-print(PORT_API)
-print(WEB_PORT)
-print(URL_MONGO)
-
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def helloworld():
-    if(request.method == 'GET'):
-        data = {"data": "Hello country"}
-        print(data["data"])
-        return jsonify(data)
-    
+app.config["MONGO_URI"] = URL_MONGO
+
+mongo = PyMongo(app)
+
+@app.route("/add", methods=["POST"])
+def bd():
+    if request.method == 'POST':
+        insert = {
+            "Nombre": "holaMundo" 
+        }
+        
+        mongo.db["record_camera"].insert_one(insert)
+        return jsonify({
+            "status": "ok"
+        })
+
 if __name__ == '__main__':
-    app.run(debug=True, port = PORT_API)
+   app.run(debug=True)
