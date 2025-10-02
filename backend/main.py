@@ -1,4 +1,4 @@
 import os
 
-DB_USERNAME = os.getenv("DB_USERNAME")
-print(DB_USERNAME);
+URL_MONGO = os.getenv("URL_MONGO")
+print(URL_MONGO);
