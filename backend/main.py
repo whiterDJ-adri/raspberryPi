@@ -1,7 +1,8 @@
 import os
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, render_template
 from flask_pymongo import PyMongo
 import cv2
+from datetime import datetime
 
 URL_MONGO = os.getenv("URL_MONGO")
 
@@ -12,21 +13,29 @@ app.config["MONGO_URI"] = URL_MONGO
 
 mongo = PyMongo(app)
 
-@app.route("/add", methods=["POST"])
-def bd():
-    if request.method == 'POST':
-        insert = {
-            "Nombre": "holaMundo" 
-        }
-        
-        mongo.db["record_camera"].insert_one(insert)
-        return jsonify({
-            "status": "ok"
-        })
+# En la raiz, se carga el index.html
+@app.route("/")
+def main():
+    return render_template("index.html")
 
-@app.route("/photo", methods=["GET"])
+# @app.route("/add", methods=["POST"])
+# def bd():
+#     if request.method == 'POST':
+#         insert = {
+#             "Nombre": "holaMundo" 
+#         }
+        
+#         mongo.db["record_camera"].insert_one(insert)
+#         return jsonify({
+#             "status": "ok"
+#         })
+
+@app.route("/photo", methods=["POST"])
 def take_photo():
-    cap = cv2.VideoCapture(0)  # 0 = primera cámara USB o integrada
+    # Seleccionamos la camara 0, suele ser la que hay por defecot
+    cap = cv2.VideoCapture(0)
+    
+    # Devuelve error en caso de que no se pueda acceder a la camara
     if not cap.isOpened():
         return jsonify({"status": "error", "message": "No se pudo acceder a la cámara"}), 500
 
@@ -35,14 +44,28 @@ def take_photo():
 
     if not ret:
         return jsonify({"status": "error", "message": "No se pudo capturar la imagen"}), 500
+    
+    # Definimos el nombre de la carpeta donde se van a guardar las imagenes
+    ruta = "photos"
+    # Para el nombre del fichero, se obtiene la fecha de hoy, se le da el formato a string que queremos y se le concatena .jgp
+    nombre_fichero = datetime.now().strftime('%Y%m%d_%H%M%S') + ".jpg";
+    # Se define la ruta del fichero que es la que mas adelante se va a guardar en la bd
+    ruta_fichero = os.path.join(ruta, nombre_fichero)
+    
+    # Se guarda el frame capturado anteriormente en la ruta especificada
+    cv2.imwrite(ruta_fichero, frame)
+    
+    # Una vez guardado, hay que hacer el insert a la bd con la ruta, nombre hora...
+    insert = {
+        "fichero": nombre_fichero,
+        "fecha": datetime.now().strftime('%Y%m%d_%H%M%S'),
+        "ruta": ruta_fichero
+    }
+    
+    mongo.db["record_camera"].insert_one(insert)
 
-    # Convertimos la imagen a JPEG
-    ret, jpeg = cv2.imencode('.jpg', frame)
-    if not ret:
-        return jsonify({"status": "error", "message": "Error al codificar la imagen"}), 500
-
-    # Devolvemos los bytes como respuesta HTTP
-    return Response(jpeg.tobytes(), mimetype='image/jpeg')
+    # Se devuelve un json con el estado y la ruta donde se encuentra el fichero
+    return jsonify({"status": "ok", "ruta": ruta_fichero})
 
 if __name__ == '__main__':
    app.run(debug=True)
