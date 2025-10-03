@@ -1,8 +1,7 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_pymongo import PyMongo
 import cv2
-from datetime import datetime
 
 URL_MONGO = os.getenv("URL_MONGO")
 
@@ -27,7 +26,7 @@ def bd():
 
 @app.route("/photo", methods=["GET"])
 def take_photo():
-    cap = cv2.VideoCapture(0)  # Abrir la cámara USB
+    cap = cv2.VideoCapture(0)  # 0 = primera cámara USB o integrada
     if not cap.isOpened():
         return jsonify({"status": "error", "message": "No se pudo acceder a la cámara"}), 500
 
@@ -37,17 +36,13 @@ def take_photo():
     if not ret:
         return jsonify({"status": "error", "message": "No se pudo capturar la imagen"}), 500
 
-    # Crear nombre de archivo con fecha y hora
-    filename = f"photo_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
-    filepath = os.path.join("photos", filename)
+    # Convertimos la imagen a JPEG
+    ret, jpeg = cv2.imencode('.jpg', frame)
+    if not ret:
+        return jsonify({"status": "error", "message": "Error al codificar la imagen"}), 500
 
-    # Crear carpeta si no existe
-    os.makedirs("photos", exist_ok=True)
-
-    # Guardar la imagen
-    cv2.imwrite(filepath, frame)
-
-    return jsonify({"status": "ok", "file": filepath})
+    # Devolvemos los bytes como respuesta HTTP
+    return Response(jpeg.tobytes(), mimetype='image/jpeg')
 
 if __name__ == '__main__':
    app.run(debug=True)
