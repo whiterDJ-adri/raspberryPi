@@ -1,12 +1,11 @@
 import os
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
-from bson.errors import InvalidId
 
 URL_MONGO = os.getenv("URL_MONGO")
 
 app = Flask(__name__)
+
 
 app.config["MONGO_URI"] = URL_MONGO
 
