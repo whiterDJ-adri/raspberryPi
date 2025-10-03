@@ -83,7 +83,8 @@ def take_photo():
         print("Error enviando a n8n:", e)
 
     # Se devuelve un json con el estado y la ruta donde se encuentra el fichero
-    return jsonify({"status": "ok", "ruta": ruta_fichero})
+    # return jsonify({"status": "ok", "ruta": ruta_fichero})
+    return render_template("fotos.html"), 200
 
 if __name__ == '__main__':
    app.run(debug=True)
