@@ -1,0 +1,27 @@
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    # Importante: solo accesible desde tu máquina
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE}
+      TZ: ${GENERIC_TIMEZONE}
+      N8N_PORT: 5678
+      N8N_PROTOCOL: http
+      N8N_SECURE_COOKIE: "false" # solo local
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
+      NODE_ENV: development
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./local-files:/files
+    networks:
+      - n8nnet
+
+volumes:
+  n8n_data:
+
+networks:
+  n8nnet:
+    driver: bridge
