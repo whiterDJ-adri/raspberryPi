@@ -1,8 +1,11 @@
 import os
 from flask import Flask, request, jsonify, Response, render_template
 from flask_pymongo import PyMongo
+
 import cv2
 from datetime import datetime
+
+import requests
 
 URL_MONGO = os.getenv("URL_MONGO")
 
@@ -63,6 +66,21 @@ def take_photo():
     }
     
     mongo.db["record_camera"].insert_one(insert)
+    n8n_webhook_url = "http://localhost:5678/webhook-test/http://127.0.0.1:5000/photo"
+    payload = {
+        "fichero": nombre_fichero,
+        "ruta": ruta_fichero,
+        "fecha": insert["fecha"]
+    }
+
+    files = {'file': (nombre_fichero, open(ruta_fichero, 'rb'), 'image/jpeg')}
+    
+    try:
+        response = requests.post(n8n_webhook_url, files=files, data={'fecha': insert["fecha"]})
+
+        print("Respuesta de n8n:", response.text)
+    except Exception as e:
+        print("Error enviando a n8n:", e)
 
     # Se devuelve un json con el estado y la ruta donde se encuentra el fichero
     return jsonify({"status": "ok", "ruta": ruta_fichero})
