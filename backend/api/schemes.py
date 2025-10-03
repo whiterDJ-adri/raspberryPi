@@ -1,14 +1,16 @@
 from marshmallow import Schema, fields
 
-class UsuarioSchema(Schema):
-    nombre = fields.String(required=True)
-    edad = fields.Integer(required=True)
-    email = fields.Email(required=True)
-    password = fields.String(required=True)
+class RecordCameraSchema(Schema):
+    fichero = fields.String(required=True)
+    fecha = fields.String(required=True)
+    ruta = fields.String(required=True)
 
-class RecordCamera(Schema):
-    codigo = fields.String(Required=True)
-    date = fields.String(required=True)
-    type = fields.String(required=True)
-    url_img = fields.String(required=True)
-    personal = fields.String(required=True)
+# class UsuarioSchema(Schema):
+#     id = fields.Str(dump_only=True)
+#     name = fields.Str(required=True, validate=validate.Length(min=1, max=100))
+#     email = fields.Email(required=True)
+#     age = fields.Int(validate=validate.Range(min=0, max=120))
+#     created_at = fields.DateTime(dump_only=True)
+
+record_camera_schema = RecordCameraSchema()
+records_camera_schema = RecordCameraSchema(many=True)
