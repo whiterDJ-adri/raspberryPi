@@ -2,3 +2,4 @@ flask
 Flask-PyMongo
 opencv-python-headless
 Requests
+marshmallow

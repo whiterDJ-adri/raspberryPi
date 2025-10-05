@@ -9,6 +9,10 @@ class RecordCameraController:
         records = self.collection.find().limit(1)
         return records
     
+    def get_all_photos(self):
+        records = self.collection.find()
+        return records
+    
     def add_photo(self, data):
         self.collection.insert_one(data)
         return {"msg": "Photo record created"}
