@@ -23,11 +23,12 @@ def obtener_foto():
     return jsonify(record), record[1]
 
 @record_cam_bp.route('/', methods=['POST'])
-def add_foto(data):
-     validated_data = record_camera_schema.load(data)
-     db = get_db_controller()
-     result = db.add_photo(validated_data)
-     return jsonify(result), result[1]
+def add_foto():
+    data = request.get_json()
+    validated_data = record_camera_schema.load(data)
+    db = get_db_controller()
+    result = db.add_photo(validated_data)
+    return jsonify(result), result[1]
     
 @record_cam_bp.route('/<photo_id>', methods=['GET'])
 def obtener_una_foto(photo_id):
