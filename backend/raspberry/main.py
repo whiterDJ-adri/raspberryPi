@@ -18,10 +18,9 @@ def take_photo(frame):
         "fichero": nombre_fichero,
         "fecha": datetime.now().strftime('%Y%m%d_%H%M%S'),
         "ruta": ruta_fichero,
-        "binario": file
     }
-    return 
-    # return requests.post("http://localhost:5000/api/photo", json=insert)
+    
+    return requests.post("http://localhost:5000/api/photo", files=file, data=insert)
 
 
 # Abrimos la cámara (0 = cámara principal)

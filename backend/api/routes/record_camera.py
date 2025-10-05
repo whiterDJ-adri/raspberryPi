@@ -24,8 +24,18 @@ def obtener_foto():
 
 @record_cam_bp.route('/', methods=['POST'])
 def add_foto():
-    data = request.get_json()
-    validated_data = record_camera_schema.load(data)
+    data = request.form.to_dict()
+    
+    data_db = {
+        "fichero": data.get("fichero"),
+        "fecha": data.get("fecha"),
+        "ruta": data.get("ruta")
+    }
+    
+    data_file = request.file["file"]
+    data_file.save(f"../media/screenshots/{data_db['fichero']}")
+    
+    validated_data = record_camera_schema.load(data_db)
     db = get_db_controller()
     result = db.add_photo(validated_data)
     return jsonify(result), result[1]
