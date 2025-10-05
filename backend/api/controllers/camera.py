@@ -4,7 +4,7 @@ from datetime import datetime
 
 class CameraController:
     def __init__(self):
-        self.directorio = "photos\screenshots"
+        self.directorio = "media\screenshots"
     
             
     def hacer_foto(self):
