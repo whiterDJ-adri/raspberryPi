@@ -21,23 +21,14 @@ def obtener_foto():
     rc = get_record_controller()
     record = rc.get_all_photos()
     return jsonify(record), record[1]
-    
-@record_cam_bp.route('/', methods=['POST'])
-def hacer_una_foto():
-    # Se llama al controlador de la camara, se usa el metodo hacer_foto y el resultado que devuelve se guarda en data
-    camera = get_camera_controller()
-    data = camera.hacer_foto()
-    
-    # Se calida los datos, es decir se mria que coincida con el schema para poder insertar los datos correctos en la bd
-    validated_data = record_camera_schema.load(data)
-    
-    # Después se llama a l controlador de la bd, y se usa el metodo add_photo para guardar los datos
-    db = get_db_controller()
-    result = db.add_photo(validated_data)
-    
-    # Devuelve o que da el metodo add_photo
-    return jsonify(result), result[1]
 
+@record_cam_bp.route('/', methods=['POST'])
+def add_foto(data):
+     validated_data = record_camera_schema.load(data)
+     db = get_db_controller()
+     result = db.add_photo(validated_data)
+     return jsonify(result), result[1]
+    
 @record_cam_bp.route('/<photo_id>', methods=['GET'])
 def obtener_una_foto(photo_id):
     db = get_db_controller()
@@ -49,3 +40,16 @@ def borrar_foto(photo_id):
     db = get_db_controller()
     result = db.delete_photo(photo_id)
     return jsonify(result), result[1]
+
+# @record_cam_bp.route('/', methods=['POST'])
+# def hacer_una_foto():
+#     # Se llama al controlador de la camara, se usa el metodo hacer_foto y el resultado que devuelve se guarda en data
+#     # Se calida los datos, es decir se mria que coincida con el schema para poder insertar los datos correctos en la bd
+#     # Después se llama a l controlador de la bd, y se usa el metodo add_photo para guardar los datos
+#     camera = get_camera_controller()
+#     data = camera.hacer_foto()
+#     validated_data = record_camera_schema.load(data)
+#     db = get_db_controller()
+#     result = db.add_photo(validated_data)
+#     # Devuelve o que da el metodo add_photo
+#     return jsonify(result), result[1]
