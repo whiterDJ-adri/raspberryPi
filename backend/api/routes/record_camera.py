@@ -32,7 +32,7 @@ def add_foto():
         "ruta": data.get("ruta")
     }
     
-    data_file = request.file["file"]
+    data_file = request.files["file"]
     data_file.save(f"../media/screenshots/{data_db['fichero']}")
     
     validated_data = record_camera_schema.load(data_db)
