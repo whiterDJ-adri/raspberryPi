@@ -1,16 +1,15 @@
-import os, cv2, requests
+import os, cv2, requests, time
 from datetime import datetime
 import numpy as np
 
 def take_photo(frame):
-    
     # Definimos la ruta y el nombre del fichero 
     ruta = "screenshots"
     nombre_fichero = datetime.now().strftime('%Y%m%d_%H%M%S') + ".jpg";
     ruta_fichero = os.path.join("../api/media", ruta, nombre_fichero)
     
     # Formatea el frame2 para que sea jpg y luego se crea el fichero con su nombre, se pasa a binario y le indicamos el tipo que es, en este caso jpeg
-    res, buffer = cv2.imencode(".jpg", frame2)
+    res, buffer = cv2.imencode(".jpg", frame)
     print(res)
     file = { "file": (nombre_fichero, buffer.tobytes(), "image/jpeg")}
     
@@ -21,7 +20,6 @@ def take_photo(frame):
     }
     
     return requests.post("http://localhost:5000/api/photo", files=file, data=insert)
-
 
 # Abrimos la cámara (0 = cámara principal)
 cap = cv2.VideoCapture(0)
@@ -53,3 +51,5 @@ while True:
 
     # Actualizamos el frame anterior
     frame1 = frame2
+    
+    time.sleep(15)
