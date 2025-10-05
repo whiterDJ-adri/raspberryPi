@@ -13,6 +13,15 @@ def get_db_controller():
 def get_camera_controller():
     return CameraController()
 
+def get_record_controller():
+    return RecordCameraController(current_app.mongo)
+
+@record_cam_bp.route('/', methods=['GET'])
+def obtener_foto():
+    rc = get_record_controller()
+    record = rc.get_all_photos()
+    return jsonify(record), record[1]
+    
 @record_cam_bp.route('/', methods=['POST'])
 def hacer_una_foto():
     # Se llama al controlador de la camara, se usa el metodo hacer_foto y el resultado que devuelve se guarda en data
@@ -27,4 +36,16 @@ def hacer_una_foto():
     result = db.add_photo(validated_data)
     
     # Devuelve o que da el metodo add_photo
-    return jsonify(result), 201
+    return jsonify(result), result[1]
+
+@record_cam_bp.route('/<photo_id>', methods=['GET'])
+def obtener_una_foto(photo_id):
+    db = get_db_controller()
+    record = db.get_one_photo()
+    return jsonify(record), record[1]
+
+@record_cam_bp.route('/<photo_id>', methods=['DELETE'])
+def borrar_foto(photo_id):
+    db = get_db_controller()
+    result = db.delete_photo(photo_id)
+    return jsonify(result), result[1]
