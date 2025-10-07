@@ -1,5 +1,6 @@
-from pymongo.errors import PyMongoError, ConnectionFailure, OperationFailure
 from bson import ObjectId
+from pymongo.errors import PyMongoError, ConnectionFailure, OperationFailure
+
 """
     PyMongoError:           Error base genérico
     ConnectionFailure:      Problemas de conexión
