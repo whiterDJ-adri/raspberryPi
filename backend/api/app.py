@@ -9,14 +9,16 @@ app.config["MONGO_URI"] = os.getenv("URL_MONGO")
 mongo = PyMongo(app)
 app.mongo = mongo
 
+
 @app.route("/")
 def main():
     return render_template("index.html")
 
-app.register_blueprint(record_cam_bp, url_prefix='/api/photo')
 
-if __name__ == '__main__':
-   app.run(debug=True)
+app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 # Blueprints
 # Se registra el blueprint en la aplicación principal Flask.

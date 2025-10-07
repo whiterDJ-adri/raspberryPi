@@ -1,9 +1,11 @@
 from marshmallow import Schema, fields
 
+
 class RecordCameraSchema(Schema):
-    fichero = fields.String(required=True)
-    fecha = fields.String(required=True)
-    ruta = fields.String(required=True)
+    filename = fields.String(required=True)
+    date = fields.String(required=True)
+    path_file = fields.String(required=True)
+
 
 # class UsuarioSchema(Schema):
 #     id = fields.Str(dump_only=True)
