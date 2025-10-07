@@ -3,3 +3,5 @@ Flask-PyMongo
 opencv-python-headless
 Requests
 marshmallow
+numpy
+bson
