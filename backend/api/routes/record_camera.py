@@ -2,6 +2,7 @@ import os
 from flask import Blueprint, jsonify, current_app, request
 from schemes import record_camera_schema
 from controllers.record_camera_bd import RecordCameraController
+import services.missatge_discord as missatge_discord
 
 # Hace referencia al blueprint que se creo, le pasa el nombre para identificar al blueprint y donde se hace referencia
 record_cam_bp = Blueprint("record_camera", __name__)
@@ -30,13 +31,16 @@ def add_foto():
     data_db = {
         "filename": data.get("filename"),
         "date": data.get("date"),
-        "file_path": os.path.join("media/screenshots", data.get("filename")),
+        "file_path": f"{os.path.join('media/screenshots', data.get('filename'))}",
     }
 
     data_file = request.files["file"]
     data_file.save(f"{data_db['file_path']}")
 
     validated_data = record_camera_schema.load(data_db)
+
+    missatge_discord.send_message(validated_data)
+
     db = get_db_controller()
     result = db.add_photo(validated_data)
     return jsonify(result), result[1]

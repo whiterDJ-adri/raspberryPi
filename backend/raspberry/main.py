@@ -51,4 +51,4 @@ while True:
 
     # Actualizamos el frame anterior
     frame1 = frame2
-    time.sleep(15)
+    time.sleep(5)
