@@ -27,7 +27,7 @@ cap = cv2.VideoCapture(0)
 
 ret, frame1 = cap.read()
 
-count = 0;
+count = 1;
 max_photos = 5;
 
 while True:
@@ -50,10 +50,11 @@ while True:
         print("¡Movimiento detectado! Valor:", average)
         take_photo(frame2)
         # Condicional para que si llega al maximo de fotos que se quiere hacer en un minuto, se tiene que esperar un minuto
-        if count < max_photos:
+        if count == max_photos:
             count = 0
             time.sleep(60)
         count += 1
+        print("count: ", count)
     else: 
         print("Sin movimiento... Valor:", average)
 
