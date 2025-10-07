@@ -4,4 +4,3 @@ opencv-python-headless
 Requests
 marshmallow
 numpy
-bson
