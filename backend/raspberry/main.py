@@ -49,11 +49,11 @@ while True:
     if average > 10:  # puedes ajustar este número según lo sensible que quieras
         print("¡Movimiento detectado! Valor:", average)
         take_photo(frame2)
-        count += 1
         # Condicional para que si llega al maximo de fotos que se quiere hacer en un minuto, se tiene que esperar un minuto
         if count == max_photos:
             count = 0
             time.sleep(60)
+        count += 1
     else: 
         print("Sin movimiento... Valor:", average)
 
@@ -61,4 +61,4 @@ while True:
     frame1 = frame2
     
     
-    time.sleep(15)
+    # time.sleep(15)
