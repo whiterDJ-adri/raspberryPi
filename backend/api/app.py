@@ -15,6 +15,7 @@ def main():
     return render_template("index.html")
 
 
+
 app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
 
 if __name__ == "__main__":

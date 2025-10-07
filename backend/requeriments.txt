@@ -4,4 +4,7 @@ opencv-python-headless
 Requests
 marshmallow
 numpy
+<<<<<<< HEAD
 discord-webhook
+=======
+>>>>>>> ed6e193ed77675ef6912a9ce5debe1acea1af7c4

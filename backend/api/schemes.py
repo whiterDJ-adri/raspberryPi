@@ -4,7 +4,7 @@ from marshmallow import Schema, fields
 class RecordCameraSchema(Schema):
     filename = fields.String(required=True)
     date = fields.String(required=True)
-    path_file = fields.String(required=True)
+    file_path = fields.String(required=True)
 
 
 # class UsuarioSchema(Schema):

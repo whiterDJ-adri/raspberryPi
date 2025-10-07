@@ -27,6 +27,9 @@ cap = cv2.VideoCapture(0)
 
 ret, frame1 = cap.read()
 
+count = 0;
+max_photos = 5;
+
 while True:
     # Leemos el siguiente frame
     ret, frame2 = cap.read()
