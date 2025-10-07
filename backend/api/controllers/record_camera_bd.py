@@ -1,7 +1,5 @@
 from bson import ObjectId
-from bson.errors import InvalidId
 from pymongo.errors import PyMongoError, ConnectionFailure, OperationFailure
-
 
 """
     PyMongoError:           Error base genérico
@@ -9,38 +7,39 @@ from pymongo.errors import PyMongoError, ConnectionFailure, OperationFailure
     OperationFailure:       Fallo en operaciones
 """
 
+
 class RecordCameraController:
     def __init__(self, mongo):
         self.collection = mongo.db["record_camera"]
 
-    # def get_one_photo(self, photo_id):
-    #     response = self.collection.find({"_id": ObjectId(photo_id)})
-    #     return response, 200
-
     def get_one_photo(self, photo_id):
-        try:
-            if not photo_id:
-                return {"error": "Photo ID is required"}, 400
+        response = self.collection.find({"_id": ObjectId(photo_id)})
+        return response, 200
 
-            obj_id = ObjectId(photo_id)
+    # def get_one_photo(self, photo_id):
+    #     try:
+    #         if not photo_id:
+    #             return {"error": "Photo ID is required"}, 400
 
-            response = self.collection.find_one({"_id": obj_id})
+    #         obj_id = ObjectId(photo_id)
 
-            if response is None:
-                return {"error": "Photo record not found"}, 404
+    #         response = self.collection.find_one({"_id": obj_id})
 
-            response["_id"] = str(response["_id"])
+    #         if response is None:
+    #             return {"error": "Photo record not found"}, 404
 
-            return response, 200
+    #         response["_id"] = str(response["_id"])
 
-        except InvalidId:
-            return {"error": "Invalid photo ID format"}, 400
-        except ConnectionFailure:
-            return {"error": "Database connection failed"}, 503
-        except PyMongoError as e:
-            return {"error": f"Database error: {str(e)}"}, 500
-        except Exception as e:
-            return {"error": f"Unexpected error: {str(e)}"}, 500
+    #         return response, 200
+
+    #     except InvalidId:
+    #         return {"error": "Invalid photo ID format"}, 400
+    #     except ConnectionFailure:
+    #         return {"error": "Database connection failed"}, 503
+    #     except PyMongoError as e:
+    #         return {"error": f"Database error: {str(e)}"}, 500
+    #     except Exception as e:
+    #         return {"error": f"Unexpected error: {str(e)}"}, 500
 
     def get_all_photos(self):
         response = self.collection.find()
