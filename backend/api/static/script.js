@@ -9,7 +9,7 @@ async function pedir_fotos() {
         console.log("Data: ", data);
         let rutas = [];
         for(let reg of data[0]){
-            let ruta = `media/screenshots/${reg.filename}`;
+            let ruta = `/api/photo/screenshots/${reg.filename}`;
             rutas.push(ruta);
         }
 
@@ -17,7 +17,7 @@ async function pedir_fotos() {
         console.log(data);
 
         rutas.forEach(r => {
-            gallery.innerHTML += `<img src="${r}">`;
+            gallery.innerHTML += `<img src="${r}"/>`;
         });
     } catch(err) {
         console.error("Error: ", err);
