@@ -18,7 +18,7 @@ async function pedir_fotos() {
         });
 
         rutas.forEach(r => {
-            gallery.innerHTML += `<img src="${r}"/>`;
+            gallery.innerHTML += `<img src="${r}" class="w-25" />`;
         });
     } catch(err) {
         console.error("Error: ", err);
