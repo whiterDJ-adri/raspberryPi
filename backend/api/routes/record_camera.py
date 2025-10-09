@@ -64,6 +64,7 @@ def borrar_foto(photo_id):
 
 @record_cam_bp.route("/view/<photo_id>", methods=["GET"])
 def ver_foto(photo_id):
+    
     """Devuelve la imagen binaria para mostrarla en el navegador."""
     rc = get_record_controller()
     result, status = rc.get_image_file(photo_id)
