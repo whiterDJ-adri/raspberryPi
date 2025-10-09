@@ -26,8 +26,8 @@ cap = cv2.VideoCapture(0)
 
 ret, frame1 = cap.read()
 
-count = 1;
-max_photos = 5;
+count = 1
+max_photos = 5
 
 while True:
     # Leemos el siguiente frame
@@ -48,8 +48,8 @@ while True:
     if average > 10:  # puedes ajustar este número según lo sensible que quieras
         print("¡Movimiento detectado! Valor:", average)
         if count == max_photos:
-            count = 1;
-            time.sleep(60);
+            count = 1
+            time.sleep(60)
         take_photo(frame2)
         count+=1
     else:

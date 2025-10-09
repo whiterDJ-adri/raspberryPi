@@ -30,5 +30,5 @@ async function pedir_fotos() {
 }
 
 async function streaming(){
-     document.getElementById('videoFeed').src = '/api/photo/video';
+    document.getElementById('videoFeed').src = '/api/photo/video';
 }

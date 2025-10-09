@@ -1,6 +1,6 @@
 import cv2
 
-video = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+video = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 # def make_video():
 #     while(True):
@@ -41,7 +41,7 @@ def make_video():
         frame = buffer.tobytes()
 
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
     video.release()
 
