@@ -20,6 +20,10 @@ async function pedir_fotos() {
         rutas.forEach(r => {
             gallery.innerHTML += `<img src="${r}" class="w-25" />`;
         });
+
+        // Para cambiar el contrador de las fotos
+        contador = document.getElementById("photoCount");
+        contador.innerHTML = `${rutas.length} fotos`;
     } catch(err) {
         console.error("Error: ", err);
     }
