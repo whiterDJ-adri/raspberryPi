@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, validate
 
 
 class RecordCameraSchema(Schema):
@@ -7,12 +7,13 @@ class RecordCameraSchema(Schema):
     file_path = fields.String(required=True)
 
 
-# class UsuarioSchema(Schema):
-#     id = fields.Str(dump_only=True)
-#     name = fields.Str(required=True, validate=validate.Length(min=1, max=100))
-#     email = fields.Email(required=True)
-#     age = fields.Int(validate=validate.Range(min=0, max=120))
-#     created_at = fields.DateTime(dump_only=True)
+class UserSchema(Schema):
+    name = fields.Str(required=False, validate=validate.Length(min=1, max=100))
+    email = fields.Email(required=True)
+    password = fields.Str(required=True, validate=validate.Length(min=8, max=24))
 
 record_camera_schema = RecordCameraSchema()
 records_camera_schema = RecordCameraSchema(many=True)
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
