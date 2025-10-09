@@ -1,6 +1,8 @@
 async function pedir_fotos() {
     let gallery = document.getElementById("gallery");
-    const api = '/api/photo';
+
+    const api = 'http://localhost:5000/api/photo';
+    
     try {
         // Pedimos todas las fotos a la api a traves del fetch (GET)
         const response = await fetch(api);
@@ -8,13 +10,11 @@ async function pedir_fotos() {
         const data = await response.json();
         console.log("Data: ", data);
         let rutas = [];
-        for(let reg of data[0]){
-            let ruta = `/api/photo/screenshots/${reg.filename}`;
+        
+        data[0].forEach(img => {
+            let ruta = `/api/photo/screenshots/${img.filename}`;
             rutas.push(ruta);
-        }
-
-        console.log("Rutas: ", rutas);
-        console.log(data);
+        });
 
         rutas.forEach(r => {
             gallery.innerHTML += `<img src="${r}"/>`;
