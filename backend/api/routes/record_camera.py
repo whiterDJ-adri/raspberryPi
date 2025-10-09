@@ -21,6 +21,8 @@ def get_record_controller():
 def obtener_foto():
     rc = get_record_controller()
     response = rc.get_all_photos()
+    print("DENTRO DEL GET")
+    print("Response: ", response)
     return jsonify(response), response[1]
 
 

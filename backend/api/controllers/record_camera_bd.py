@@ -42,8 +42,25 @@ class RecordCameraController:
     #         return {"error": f"Unexpected error: {str(e)}"}, 500
 
     def get_all_photos(self):
-        response = self.collection.find()
-        return response, 200
+        # response = self.collection.find()
+        # print("DENTRO ALL PHOTOS: ", response)
+        # return response, 200
+        try:
+            cursor = self.collection.find()
+            photos = []
+
+            for doc in cursor:
+                doc["_id"] = str(doc["_id"])  # convertir ObjectId → str
+                photos.append(doc)
+
+            return photos, 200
+
+        except ConnectionFailure:
+            return {"error": "Database connection failed"}, 503
+        except PyMongoError as e:
+            return {"error": f"Database error: {str(e)}"}, 500
+        except Exception as e:
+            return {"error": f"Unexpected error: {str(e)}"}, 500
 
     def add_photo(self, data):
         self.collection.insert_one(data)

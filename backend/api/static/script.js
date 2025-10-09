@@ -3,7 +3,10 @@ async function pedir_fotos() {
     const api = '/api/photo';
     try {
         const response = await fetch(api);
-    } catch {
+        const data = await response.json();
 
+        console.log(data);
+    } catch(err) {
+        console.error("Error: ", err);
     }
 }
