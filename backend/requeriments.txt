@@ -5,3 +5,5 @@ Requests
 marshmallow
 numpy
 discord-webhook
+Flask-Babel
+Babel

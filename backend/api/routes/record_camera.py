@@ -1,5 +1,8 @@
 import os
-from flask import Blueprint, jsonify, current_app, request, send_from_directory 
+from flask import Blueprint, jsonify, current_app, request, send_from_directory
+ 
+ # etiquetas de traducción
+from flask_babel import gettext as _, ngettext 
 from schemes import record_camera_schema
 from controllers.record_camera_bd import RecordCameraController
 import services.missatge_discord as missatge_discord
