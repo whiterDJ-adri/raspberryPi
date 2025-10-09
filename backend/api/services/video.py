@@ -1,6 +1,6 @@
 import cv2
 
-video = cv2.VideoCapture(0)
+video = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 
 # def make_video():
 #     while(True):
@@ -19,17 +19,29 @@ video = cv2.VideoCapture(0)
 #        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 def make_video():
+    if not video.isOpened():
+        print("❌ No se pudo abrir la cámara")
+        return
+
+    print("✅ Cámara abierta correctamente")
 
     while True:
         ret, frame = video.read()
         if not ret:
+            print("⚠️ No se pudo leer un frame")
             break
+
+        # print("📸 Frame capturado")  # Puedes dejarlo activo para ver en la terminal
+
         ret, buffer = cv2.imencode('.jpg', frame)
+        if not ret:
+            print("⚠️ Error al codificar frame")
+            continue
+
         frame = buffer.tobytes()
 
-        # 🔹 Encabezados correctos
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-    video.release()  # 🔹 Cierra la cámara al terminar
+    video.release()
 
