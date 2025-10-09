@@ -27,5 +27,5 @@ async function pedir_fotos() {
 
 async function streaming(){
     const img = document.getElementById('videoFeed');
-     img.src = '/video';
+     img.src = 'api/photo/video';
 }

@@ -93,4 +93,5 @@ def real_streaming():
     # multipart --> Múltiples archivos
     # x-mixed-replace --> Cada vz que se envie remplaza la anterior
     # boundary=frame --> Separador entre cada mensaje, en este caso es frame
-     return Response(video.make_video(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(video.make_video(),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
