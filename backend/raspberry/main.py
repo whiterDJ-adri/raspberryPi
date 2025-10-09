@@ -47,7 +47,11 @@ while True:
     # Si el promedio supera un valor, consideramos que hay movimiento
     if average > 10:  # puedes ajustar este número según lo sensible que quieras
         print("¡Movimiento detectado! Valor:", average)
+        if count == max_photos:
+            count = 1;
+            time.sleep(60);
         take_photo(frame2)
+        count+=1
     else:
         print("Sin movimiento... Valor:", average)
 
