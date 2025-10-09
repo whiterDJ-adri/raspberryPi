@@ -1,8 +1,9 @@
 import os
-from flask import Blueprint, jsonify, current_app, request, send_from_directory 
+from flask import Blueprint, jsonify, current_app, request, send_from_directory, Response
 from schemes import record_camera_schema
 from controllers.record_camera_bd import RecordCameraController
 import services.missatge_discord as missatge_discord
+import services.video as video
 
 # Hace referencia al blueprint que se creo, le pasa el nombre para identificar al blueprint y donde se hace referencia
 record_cam_bp = Blueprint("record_camera", __name__)
@@ -85,3 +86,11 @@ def media(filename):
         filename,
         as_attachment=False
     )
+
+@record_cam_bp.route('/video')
+def real_streaming():
+    # Devuelve todas las imagenes del make_video al navegador, con el mimetype, se le indica el tipo de archivo que va a estar recibiendo
+    # multipart --> Múltiples archivos
+    # x-mixed-replace --> Cada vz que se envie remplaza la anterior
+    # boundary=frame --> Separador entre cada mensaje, en este caso es frame
+     return Response(video.make_video(), mimetype='multipart/x-mixed-replace; boundary=frame')

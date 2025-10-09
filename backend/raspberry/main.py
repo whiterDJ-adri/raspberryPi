@@ -4,7 +4,6 @@ import time
 import numpy as np
 from datetime import datetime
 
-
 def take_photo(frame):
     # Definimos el nombre del fichero
     filename = datetime.now().strftime("%Y%m%d_%H%M%S") + ".jpg"

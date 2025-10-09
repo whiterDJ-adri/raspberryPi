@@ -24,3 +24,8 @@ async function pedir_fotos() {
         console.error("Error: ", err);
     }
 }
+
+async function streaming(){
+    const img = document.getElementById('videoFeed');
+     img.src = '/video';
+}
