@@ -1,5 +1,6 @@
 async function pedir_fotos() {
     let gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
 
     const api = 'http://localhost:5000/api/photo';
     
