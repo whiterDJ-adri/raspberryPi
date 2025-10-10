@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
-from flask_babel import Babel, gettext as _, ngettext, format_datetime
+from flask_babel import Babel, get_locale, gettext as _ 
 from routes.record_camera import record_cam_bp
 from routes.login import login_bp
 
@@ -13,11 +13,13 @@ mongo = PyMongo(app)
 app.mongo = mongo
 
 
+
 # --- Config i18n ---
 app.config.update(
     BABEL_DEFAULT_LOCALE="es",
     BABEL_DEFAULT_TIMEZONE="Europe/Madrid",
     LANGUAGES=["es", "ca"],
+    BABEL_TRANSLATION_DIRECTORIES="locales",
 )
 
 
@@ -37,13 +39,13 @@ def select_timezone():
 babel = Babel(app, locale_selector=select_locale, timezone_selector=select_timezone)
 
 
+
 # --- Rutas ---
 @app.route("/")
 def main():
     # Ejemplo: textos marcados en Python (opcional; en plantillas también puedes marcar)
     titulo = _("Panel de cámara")
     return render_template("index.html", titulo=titulo)
-
 
 
 app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
