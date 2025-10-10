@@ -24,7 +24,7 @@ def obtener_foto():
     response = rc.get_all_photos()
     print("DENTRO DEL GET")
     print("Response: ", response)
-    return jsonify(response), response[1]
+    return jsonify(response), 200
 
 
 @record_cam_bp.route("/", methods=["POST"])
@@ -46,14 +46,14 @@ def add_foto():
 
     db = get_db_controller()
     result = db.add_photo(validated_data)
-    return jsonify(result), result[1]
+    return jsonify(result), 201
 
 
 @record_cam_bp.route("/<photo_id>", methods=["GET"])
 def obtener_una_foto(photo_id):
     db = get_db_controller()
     response = db.get_one_photo()
-    return jsonify(response), response[1]
+    return jsonify(response), 200
 
 
 @record_cam_bp.route("/<photo_id>", methods=["DELETE"])
@@ -61,20 +61,6 @@ def borrar_foto(photo_id):
     db = get_db_controller()
     result = db.delete_photo(photo_id)
     return jsonify(result), result[1]
-
-
-@record_cam_bp.route("/view/<photo_id>", methods=["GET"])
-def ver_foto(photo_id):
-    
-    """Devuelve la imagen binaria para mostrarla en el navegador."""
-    rc = get_record_controller()
-    result, status = rc.get_image_file(photo_id)
-
-    # Si es un error (dict), devolvemos JSON; si es imagen, devolvemos Response
-    if isinstance(result, dict):
-        return jsonify(result), status
-    else:
-        return result
 
 @record_cam_bp.route('/screenshots/<path:filename>')
 def media(filename):

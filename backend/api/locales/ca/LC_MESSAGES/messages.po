@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-09 20:43+0200\n"
-"PO-Revision-Date: 2025-10-09 20:34+0200\n"
+"POT-Creation-Date: 2025-10-10 09:56+0200\n"
+"PO-Revision-Date: 2025-10-10 09:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ca\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -18,11 +18,95 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:43
+#: app.py:47
 msgid "Panel de cámara"
-msgstr "Panell"
+msgstr ""
 
-#: templates/index.html:23
+#: templates/index.html:7 templates/index.html:23
 msgid "Cámara de Movimiento"
-msgstr "Càmera de moviment"
+msgstr "Càmera de Moviment"
+
+#: templates/index.html:31
+msgid "Usuario"
+msgstr "Usuari"
+
+#: templates/index.html:31
+msgid "Admin"
+msgstr "Administrador"
+
+#: templates/index.html:32
+msgid "Cerrar Sesión"
+msgstr "Tancar Sessió"
+
+#: templates/index.html:44
+msgid "Filtros"
+msgstr "Filtres"
+
+#: templates/index.html:48
+msgid "Fecha"
+msgstr "Data"
+
+#: templates/index.html:53
+msgid "Ver en tiempo real"
+msgstr "Veure en temps real"
+
+#: templates/index.html:57
+msgid "Eliminar Todas"
+msgstr "Eliminar Totes"
+
+#: templates/index.html:62
+msgid "Actualizar"
+msgstr "Actualitzar"
+
+#: templates/index.html:74
+msgid "Capturas de Movimiento"
+msgstr "Captures de Moviment"
+
+#: templates/index.html:75
+msgid "fotos"
+msgstr "fotos"
+
+#: templates/index.html:92
+msgid "Imagen"
+msgstr "Imatge"
+
+#: templates/index.html:96
+msgid "Imagen ampliada"
+msgstr "Imatge ampliada"
+
+#: templates/index.html:99
+msgid "Cerrar"
+msgstr "Tancar"
+
+#: templates/index.html:100
+msgid "Descargar"
+msgstr "Descarregar"
+
+#: templates/index.html:111
+msgid "Iniciar Sesión"
+msgstr "Iniciar Sessió"
+
+#: templates/index.html:116
+msgid "Tipo de Usuario"
+msgstr "Tipus d'Usuari"
+
+#: templates/index.html:118
+msgid "Seleccionar..."
+msgstr "Seleccionar..."
+
+#: templates/index.html:119
+msgid "Administrador"
+msgstr "Administrador"
+
+#: templates/index.html:120
+msgid "Cliente"
+msgstr "Client"
+
+#: templates/index.html:124
+msgid "Contraseña"
+msgstr "Contrasenya"
+
+#: templates/index.html:127
+msgid "Entrar"
+msgstr "Entrar"
 

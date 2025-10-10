@@ -1,7 +1,5 @@
 from bson import ObjectId
-from flask import Response
-import os
-from pymongo.errors import PyMongoError, ConnectionFailure, OperationFailure
+from pymongo.errors import PyMongoError, ConnectionFailure
 
 """
     PyMongoError:           Error base genérico
@@ -15,8 +13,8 @@ class RecordCameraController:
         self.collection = mongo.db["record_camera"]
 
     def get_one_photo(self, photo_id):
-        response = self.collection.find({"_id": ObjectId(photo_id)})
-        return response, 200
+        photo = self.collection.find({"_id": ObjectId(photo_id)})
+        return photo
 
     # def get_one_photo(self, photo_id):
     #     try:
@@ -42,18 +40,9 @@ class RecordCameraController:
     #         return {"error": f"Unexpected error: {str(e)}"}, 500
 
     def get_all_photos(self):
-        # response = self.collection.find()
-        # print("DENTRO ALL PHOTOS: ", response)
-        # return response, 200
         try:
-            cursor = self.collection.find()
-            photos = []
-
-            for doc in cursor:
-                doc["_id"] = str(doc["_id"])  # convertir ObjectId → str
-                photos.append(doc)
-
-            return photos, 200
+            photos = self.collection.find({}, {"_id": 1})
+            return photos
 
         except ConnectionFailure:
             return {"error": "Database connection failed"}, 503
@@ -64,7 +53,7 @@ class RecordCameraController:
 
     def add_photo(self, data):
         self.collection.insert_one(data)
-        return {"msg": "Photo record created"}, 201
+        return {"msg": "Photo record created"}
 
     def delete_photo(self, photo_id):
         result = self.collection.delete_one({"_id": ObjectId(photo_id)})
@@ -73,22 +62,3 @@ class RecordCameraController:
         else:
             return {"msg": "Photo record not found"}, 404
     
-    def get_image_file(self, photo_id):
-        """Lee el archivo local de la foto y lo devuelve como imagen."""
-        try:
-            photo, status = self.get_one_photo(photo_id)
-            if status != 200:
-                return photo, status
-
-            path = photo.get("file_path")
-            if not path or not os.path.exists(path):
-                return {"error": "Image file not found"}, 404
-
-            with open(path, "rb") as f:
-                image_data = f.read()
-
-            return Response(image_data, mimetype="image/jpeg"), 200
-
-        except Exception as e:
-            return {"error": f"Unexpected error: {str(e)}"}, 500
-
