@@ -49,7 +49,7 @@ def main():
 
 
 app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
-app.register_blueprint(login_bp, url_prefix="/api/login")
+app.register_blueprint(login_bp, url_prefix="/login")
 
 if __name__ == "__main__":
     app.run(debug=True)

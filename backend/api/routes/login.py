@@ -6,11 +6,16 @@ login_bp = Blueprint("login", __name__)
 signup_bp = Blueprint("signup", __name__)
 
 
+
 def get_login_controller():
     return LoginController(current_app.mongo)
 
+@login_bp.route("/", methods=["GET"])
+def show_page_login():
+    return render_template("login.html")
+    
 
-@login_bp.route("/login/login", methods=["POST"])
+@login_bp.route("/login", methods=["POST"])
 def login():
     data = request.json
     validated_data = user_schema.load(data)
@@ -29,7 +34,7 @@ def login():
     return render_template("index.html"), 200
 
 
-@signup_bp.route("/signup/signup", methods=["POST"])
+@signup_bp.route("/signup", methods=["POST"])
 def signup():
     data = request.json
     validated_data = user_schema.load(data)
