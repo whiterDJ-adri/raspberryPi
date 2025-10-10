@@ -1,7 +1,5 @@
 from bson import ObjectId
-from flask import Response
-import os
-from pymongo.errors import PyMongoError, ConnectionFailure, OperationFailure
+from pymongo.errors import PyMongoError, ConnectionFailure
 
 """
     PyMongoError:           Error base genérico
