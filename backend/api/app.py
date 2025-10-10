@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
-from flask_babel import Babel, get_locale, gettext as _ 
+from flask_babel import Babel,  gettext as _ 
 from routes.record_camera import record_cam_bp
 from routes.login import login_bp
 
