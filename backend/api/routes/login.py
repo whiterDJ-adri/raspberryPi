@@ -22,13 +22,13 @@ def get_login_controller():
 def show_page_login():
     if "email" in session:
         return redirect(url_for("dashboard.dashboard"))
-    
+
     return render_template("login.html")
 
 
 @login_bp.route("/login", methods=["POST"])
 def login():
-    data = request.json 
+    data = request.json
     email = data.get("email")
     password = data.get("password")
 
@@ -44,8 +44,13 @@ def login():
     session["email"] = email
     session["isAdmin"] = user.get("isAdmin", False)
 
-    # return redirect(url_for("dashboard.dashboard"))
-    return jsonify({"message": "Log in successful", "redirect": url_for("dashboard.dashboard")})
+    return jsonify(
+        {
+            "message": "Log in successful",
+            "redirect": url_for("dashboard.dashboard"),
+            "status": 200,
+        }
+    )
 
 
 @login_bp.route("/signup", methods=["POST"])
@@ -63,10 +68,22 @@ def signup():
 
     login_controller.create_user(validated_data)
 
-    return jsonify({"message": "User created succesfully"}), 201
+    return jsonify(
+        {
+            "message": "User created succesfully",
+            "redirect": url_for("login.show_page_login"),
+            "status": 201,
+        }
+    )
 
 
 @login_bp.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for("login.show_page_login"))
+    return jsonify(
+        {
+            "message": "Logout successful",
+            "redirect": url_for("login.show_page_login"),
+            "status": 200,
+        }
+    )

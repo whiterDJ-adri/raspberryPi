@@ -1,10 +1,6 @@
 from bson import ObjectId
 from pymongo.errors import PyMongoError, ConnectionFailure
 
-"""
-    PyMongoError:           Error base genérico
-    ConnectionFailure:      Problemas de conexión
-"""
 
 class RecordCameraController:
     def __init__(self, mongo):
@@ -13,29 +9,6 @@ class RecordCameraController:
     def get_one_photo(self, photo_id):
         photo = self.collection.find({"_id": ObjectId(photo_id)})
         return photo
-
-    # def get_one_photo(self, photo_id):
-    #     try:
-    #         if not photo_id:
-    #             return {"error": "Photo ID is required"}, 400
-
-    #         obj_id = ObjectId(photo_id)
-
-    #         response = self.collection.find_one({"_id": obj_id})
-
-    #         if response is None:
-    #             return {"error": "Photo record not found"}, 404
-
-    #         response["_id"] = str(response["_id"])
-
-    #         return response, 200
-
-    #     except ConnectionFailure:
-    #         return {"error": "Database connection failed"}, 503
-    #     except PyMongoError as e:
-    #         return {"error": f"Database error: {str(e)}"}, 500
-    #     except Exception as e:
-    #         return {"error": f"Unexpected error: {str(e)}"}, 500
 
     def get_all_photos(self):
         try:
@@ -59,4 +32,3 @@ class RecordCameraController:
             return {"msg": "Photo record deleted"}, 200
         else:
             return {"msg": "Photo record not found"}, 404
-    
