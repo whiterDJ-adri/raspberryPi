@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+</head>
+<body>
+    <h1>Hola Admin</h1>
+    <button class="btn">Cerrar Sesion</button>
+    <script>
+        const logoutBtn = document.querySelector('.btn');
+        logoutBtn.addEventListener('click', function() {
+            window.location.href = '/login/logout';
+        });
+    </script>
+</body>
+</html>

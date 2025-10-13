@@ -4,9 +4,7 @@ from pymongo.errors import PyMongoError, ConnectionFailure
 """
     PyMongoError:           Error base genérico
     ConnectionFailure:      Problemas de conexión
-    OperationFailure:       Fallo en operaciones
 """
-
 
 class RecordCameraController:
     def __init__(self, mongo):

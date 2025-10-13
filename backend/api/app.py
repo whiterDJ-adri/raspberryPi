@@ -1,17 +1,18 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, url_for, redirect
 from flask_pymongo import PyMongo
-from flask_babel import Babel,  gettext as _ 
+from flask_babel import Babel, gettext as _
 from routes.record_camera import record_cam_bp
 from routes.login import login_bp
+from routes.dashboard import dashboard_bp
 
 app = Flask(__name__)
 
 # --- Mongo ---
+app.config['SECRET_KEY'] = 'tu-clave-secreta'
 app.config["MONGO_URI"] = os.getenv("URL_MONGO")
 mongo = PyMongo(app)
 app.mongo = mongo
-
 
 
 # --- Config i18n ---
@@ -39,17 +40,18 @@ def select_timezone():
 babel = Babel(app, locale_selector=select_locale, timezone_selector=select_timezone)
 
 
-
 # --- Rutas ---
 @app.route("/")
 def main():
-    # Ejemplo: textos marcados en Python (opcional; en plantillas también puedes marcar)
-    titulo = _("Panel de cámara")
-    return render_template("index.html", titulo=titulo)
+    if 'email' not in session:
+        print("El usuario debe iniciar sesion o registrarse")
+        return redirect(url_for('login.show_page_login'))
+    return render_template("index.html")
 
 
 app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
-app.register_blueprint(login_bp, url_prefix="/api/login")
+app.register_blueprint(login_bp, url_prefix="/login")
+app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
 
 if __name__ == "__main__":
     app.run(debug=True)
