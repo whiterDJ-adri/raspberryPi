@@ -44,7 +44,8 @@ def login():
     session["email"] = email
     session["isAdmin"] = user.get("isAdmin", False)
 
-    return redirect(url_for("dashboard.dashboard"))
+    # return redirect(url_for("dashboard.dashboard"))
+    return jsonify({"message": "Log in successful", "redirect": url_for("dashboard.dashboard")})
 
 
 @login_bp.route("/signup", methods=["POST"])
