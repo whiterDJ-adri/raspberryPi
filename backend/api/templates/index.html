@@ -28,7 +28,8 @@
                     <a href="?lang=es" class="btn btn-sm btn-outline-light">ES</a>
                     <a href="?lang=ca" class="btn btn-sm btn-outline-light">CA</a>
                 </div>
-                <span class="text-light me-3" id="userInfo">{{ _("Usuario") }}: <span id="userName">{{ _("Admin") }}</span></span>
+                <span class="text-light me-3" id="userInfo">{{ _("Usuario") }}: <span id="userName">{{ _("Admin")
+                        }}</span></span>
                 <button class="btn btn-outline-light btn-sm" id="logoutBtn">{{ _("Cerrar Sesión") }}</button>
             </div>
         </div>
@@ -50,16 +51,21 @@
                         </div>
                         <div class="row m-0 p-0" id="adminControls">
                             <div class="col d-flex justify-content-center">
-                                <button class="btn btn-danger w-100" id="straming" onclick="streaming()">{{ _("Ver en tiempo real") }}</button>
+                                <button class="btn btn-danger w-100" id="straming" onclick="streaming()">{{ _("Ver en
+                                    tiempo real") }}</button>
                             </div>
 
                             <div class="col d-flex justify-content-center">
-                                <button class="btn btn-warning w-100" id="deleteAllBtn">{{ _("Eliminar Todas") }}</button>
+                                <button class="btn btn-warning w-100" id="deleteAllBtn">{{ _("Eliminar Todas")
+                                    }}</button>
                             </div>
 
                             <div class="col d-flex justify-content-center">
-                                <button class="btn btn-secondary w-100" id="refreshBtn"
-                                    onclick="pedir_fotos()">{{ _("Actualizar") }}</button>
+                                <button class="btn btn-secondary w-100" id="refreshBtn" onclick="pedir_fotos()">{{
+                                    _("Actualizar") }}</button>
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <button class="deleteButton btn btn-danger w-100" id="deleteButton">{{ _("Borrar") }}</button>
                             </div>
                         </div>
 
