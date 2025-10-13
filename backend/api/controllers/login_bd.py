@@ -2,7 +2,7 @@
 
 class LoginController:
     def __init__(self, mongo):
-        self.collection = mongo.db["login"]
+        self.collection = mongo.db["users"]
     
     def get_user(self, email):
         user = self.collection.find_one({"email": email})

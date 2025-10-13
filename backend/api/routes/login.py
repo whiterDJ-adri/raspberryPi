@@ -1,40 +1,53 @@
-from flask import Blueprint, request, jsonify, current_app, render_template
+from flask import (
+    Blueprint,
+    request,
+    jsonify,
+    current_app,
+    render_template,
+    session,
+    redirect,
+    url_for,
+)
 from schemes import user_schema
 from controllers.login_bd import LoginController
 
 login_bp = Blueprint("login", __name__)
-signup_bp = Blueprint("signup", __name__)
-
 
 
 def get_login_controller():
     return LoginController(current_app.mongo)
 
+
 @login_bp.route("/", methods=["GET"])
 def show_page_login():
-    return render_template("login.html")
+    if "email" in session:
+        return redirect(url_for("dashboard.dashboard"))
     
+    return render_template("login.html")
+
 
 @login_bp.route("/login", methods=["POST"])
 def login():
-    data = request.json
-    validated_data = user_schema.load(data)
-    data_email = validated_data.get("email")
-    data_password = validated_data.get("password")
+    data = request.json 
+    email = data.get("email")
+    password = data.get("password")
 
-    login_controller = get_login_controller()
-    data_bd = login_controller.get_user(data_email)
+    controller = get_login_controller()
+    user = controller.get_user(email)
 
-    if data_bd is None:
-        return jsonify({"message": "User not found"}), 404
+    if user is None:
+        return jsonify({"message": "Invalid credentials"}), 401
 
-    if data_bd.get("password") != data_password:
-        return jsonify({"message": "Invalid password"}), 401
+    if user.get("password") != password:
+        return jsonify({"message": "Invalid credentials"}), 401
 
-    return render_template("index.html"), 200
+    session["email"] = email
+    session["isAdmin"] = user.get("isAdmin", False)
+
+    return redirect(url_for("dashboard.dashboard"))
 
 
-@signup_bp.route("/signup", methods=["POST"])
+@login_bp.route("/signup", methods=["POST"])
 def signup():
     data = request.json
     validated_data = user_schema.load(data)
@@ -46,8 +59,13 @@ def signup():
 
     if existing_user is not None:
         return jsonify({"message": "User already exists"}), 400
-    
+
     login_controller.create_user(validated_data)
 
     return jsonify({"message": "User created succesfully"}), 201
-    
+
+
+@login_bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("login.show_page_login"))
