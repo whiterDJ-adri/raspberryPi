@@ -17,6 +17,7 @@ form.addEventListener("submit", async (e) => {
 
     const data = await response.json();
     console.log("Respuesta del servidor:", data);
+    window.location.href = data.redirect;
   } catch (error) {
     console.error("Error en el fetch:", error);
   }
