@@ -110,6 +110,6 @@ msgstr "Contrasenya"
 msgid "Entrar"
 msgstr "Entrar"
 
+#~ msgid "Borrar"
+#~ msgstr "Eliminar"
 
-msgid "Borrar"
-msgstr "Eliminar"

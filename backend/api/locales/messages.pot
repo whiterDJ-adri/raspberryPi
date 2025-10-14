@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-10 09:56+0200\n"
+"POT-Creation-Date: 2025-10-14 10:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,100 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:47
-msgid "Panel de cámara"
+#: templates/dashboard_admin.html:7
+msgid "page_title"
+msgstr ""
+
+#: templates/dashboard_admin.html:22
+msgid "nav_camera_title"
+msgstr ""
+
+#: templates/dashboard_admin.html:29
+msgid "nav_user_info"
+msgstr ""
+
+#: templates/dashboard_admin.html:29
+msgid "nav_user_admin"
+msgstr ""
+
+#: templates/dashboard_admin.html:31
+msgid "nav_logout_btn"
+msgstr ""
+
+#: templates/dashboard_admin.html:41
+msgid "filter_card_header"
+msgstr ""
+
+#: templates/dashboard_admin.html:45
+msgid "filter_date_label"
+msgstr ""
+
+#: templates/dashboard_admin.html:50
+msgid "filter_btn_streaming"
+msgstr ""
+
+#: templates/dashboard_admin.html:54
+msgid "filter_btn_delete_all"
+msgstr ""
+
+#: templates/dashboard_admin.html:60
+msgid "filter_btn_refresh"
+msgstr ""
+
+#: templates/dashboard_admin.html:63
+msgid "filter_btn_delete"
+msgstr ""
+
+#: templates/dashboard_admin.html:75
+msgid "list_card_header"
+msgstr ""
+
+#: templates/dashboard_admin.html:76
+msgid "list_photo_count_plural"
+msgstr ""
+
+#: templates/dashboard_admin.html:91
+msgid "modal_image_title"
+msgstr ""
+
+#: templates/dashboard_admin.html:95
+msgid "modal_image_alt"
+msgstr ""
+
+#: templates/dashboard_admin.html:98
+msgid "modal_btn_close"
+msgstr ""
+
+#: templates/dashboard_admin.html:99
+msgid "modal_btn_download"
+msgstr ""
+
+#: templates/dashboard_admin.html:109
+msgid "login_modal_title"
+msgstr ""
+
+#: templates/dashboard_admin.html:114
+msgid "login_label_user_type"
+msgstr ""
+
+#: templates/dashboard_admin.html:116
+msgid "login_select_placeholder"
+msgstr ""
+
+#: templates/dashboard_admin.html:117
+msgid "login_option_admin"
+msgstr ""
+
+#: templates/dashboard_admin.html:118
+msgid "login_option_client"
+msgstr ""
+
+#: templates/dashboard_admin.html:122
+msgid "login_label_password"
+msgstr ""
+
+#: templates/dashboard_admin.html:125
+msgid "login_btn_submit"
 msgstr ""
 
 #: templates/index.html:7 templates/index.html:23
@@ -33,79 +125,85 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: templates/index.html:32
+#: templates/index.html:33
 msgid "Cerrar Sesión"
 msgstr ""
 
-#: templates/index.html:44
+#: templates/index.html:45
 msgid "Filtros"
 msgstr ""
 
-#: templates/index.html:48
+#: templates/index.html:49
 msgid "Fecha"
 msgstr ""
 
-#: templates/index.html:53
-msgid "Ver en tiempo real"
+#: templates/index.html:54
+msgid ""
+"Ver en\n"
+"                                    tiempo real"
 msgstr ""
 
-#: templates/index.html:57
+#: templates/index.html:59
 msgid "Eliminar Todas"
 msgstr ""
 
-#: templates/index.html:62
+#: templates/index.html:65
 msgid "Actualizar"
 msgstr ""
 
-#: templates/index.html:74
+#: templates/index.html:68
+msgid "Borrar"
+msgstr ""
+
+#: templates/index.html:80
 msgid "Capturas de Movimiento"
 msgstr ""
 
-#: templates/index.html:75
+#: templates/index.html:81
 msgid "fotos"
 msgstr ""
 
-#: templates/index.html:92
+#: templates/index.html:98
 msgid "Imagen"
 msgstr ""
 
-#: templates/index.html:96
+#: templates/index.html:102
 msgid "Imagen ampliada"
 msgstr ""
 
-#: templates/index.html:99
+#: templates/index.html:105
 msgid "Cerrar"
 msgstr ""
 
-#: templates/index.html:100
+#: templates/index.html:106
 msgid "Descargar"
 msgstr ""
 
-#: templates/index.html:111
+#: templates/index.html:117
 msgid "Iniciar Sesión"
 msgstr ""
 
-#: templates/index.html:116
+#: templates/index.html:122
 msgid "Tipo de Usuario"
 msgstr ""
 
-#: templates/index.html:118
+#: templates/index.html:124
 msgid "Seleccionar..."
 msgstr ""
 
-#: templates/index.html:119
+#: templates/index.html:125
 msgid "Administrador"
 msgstr ""
 
-#: templates/index.html:120
+#: templates/index.html:126
 msgid "Cliente"
 msgstr ""
 
-#: templates/index.html:124
+#: templates/index.html:130
 msgid "Contraseña"
 msgstr ""
 
-#: templates/index.html:127
+#: templates/index.html:133
 msgid "Entrar"
 msgstr ""
 
