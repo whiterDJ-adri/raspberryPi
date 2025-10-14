@@ -82,8 +82,20 @@ def logout():
     session.clear()
     return jsonify(
         {
-            "message": "Logout successful",
+            "message": "Logout successfully",
             "redirect": url_for("login.show_page_login"),
             "status": 200,
         }
     )
+
+@login_bp.route("/delete", methods = ["POST"])
+def delete_use():
+    data = request.json
+    email = data.get("email")
+    login_controller = get_login_controller()
+    login_controller.delete_user(email)
+    
+    return jsonify({
+        "message": "User deleted succefully",
+        "status": 200
+    })

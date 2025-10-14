@@ -10,3 +10,7 @@ class LoginController:
     
     def create_user(self, user_data):
         self.collection.create_one(user_data)
+    
+    def delete_user(self, email):
+        self.collection.delete_one({"email": email})
+        
