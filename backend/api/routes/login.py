@@ -99,3 +99,19 @@ def delete_use():
         "message": "User deleted succefully",
         "status": 200
     })
+    
+@login_bp.route("/users", methods=["GET"])
+def get_all_users():
+    login_controller = get_login_controller()
+    users = login_controller.get_all_users()
+    
+    user_list = [
+        {
+            "name": user.get("name", "Sin nombre"),
+            "email": user.get("email"),
+            "isAdmin": user.get("isAdmin", False)
+        }
+        for user in users
+    ]
+
+    return jsonify(user_list)
