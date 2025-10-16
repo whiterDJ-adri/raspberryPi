@@ -88,28 +88,27 @@ def logout():
         }
     )
 
-@login_bp.route("/delete", methods = ["POST"])
+
+@login_bp.route("/delete", methods=["POST"])
 def delete_use():
     data = request.json
     email = data.get("email")
     login_controller = get_login_controller()
     login_controller.delete_user(email)
-    
-    return jsonify({
-        "message": "User deleted succefully",
-        "status": 200
-    })
-    
+
+    return jsonify({"message": "User deleted succefully", "status": 200})
+
+
 @login_bp.route("/users", methods=["GET"])
 def get_all_users():
     login_controller = get_login_controller()
     users = login_controller.get_all_users()
-    
+
     user_list = [
         {
             "name": user.get("name", "Sin nombre"),
             "email": user.get("email"),
-            "isAdmin": user.get("isAdmin", False)
+            "isAdmin": user.get("isAdmin", False),
         }
         for user in users
     ]

@@ -16,7 +16,7 @@ def dashboard():
 @dashboard_bp.route("/admin")
 @admin_required
 def admin_dashboard():
-    return redirect(url_for("dashboard.dashboard"))
+    return render_template("dashboard_admin.html")
 
 
 @dashboard_bp.route("/admin/boton")
