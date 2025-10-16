@@ -1,5 +1,6 @@
 from bson import ObjectId
 from pymongo.errors import PyMongoError, ConnectionFailure
+from datetime import datetime
 
 
 class RecordCameraController:
@@ -32,3 +33,32 @@ class RecordCameraController:
             return {"msg": "Photo record deleted"}, 200
         else:
             return {"msg": "Photo record not found"}, 404
+
+    def get_photos_by_date(self, date_str):
+        try:
+            # Convertir la fecha del formato YYYY-MM-DD a YYYYMMDD que es como esta en la  BD
+            # Si viene con guiones, los quitamos
+            if '-' in date_str:
+                # Se pasa el string a objeto fecha
+                date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                # Se le da el formato
+                date_formatted = date_obj.strftime('%Y%m%d')
+            else:
+                date_formatted = date_str
+            
+            print(f"Buscando fotos con fecha: {date_formatted}")
+            
+            # Crear expresión regular para buscar fechas que comiencen con el patrón en este caso con año-mes-dia porque no nos intreresan las horas
+            date_pattern = f"^{date_formatted}"
+            
+            # Buscar, se usa $regex que es una expresion de busqueda en mongo que  cuadno pones ^ te indica el comienzo es decir se buscan los dates que empiezen por el año-mes-dia obtenido desde js
+            photos = list(self.collection.find(
+                {"date": {"$regex": date_pattern}},
+                {"_id": 0}
+            ))
+            
+            print(f"Fotos encontradas para {date_formatted}: {len(photos)}")
+            return photos
+        
+        except Exception as e:
+            return {"error": f"Unexpected error: {str(e)}"}, 500

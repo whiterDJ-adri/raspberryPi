@@ -21,8 +21,17 @@ def get_record_controller():
 @record_cam_bp.route("/", methods=["GET"])
 def obtener_foto():
     rc = get_record_controller()
-    response = (rc.get_all_photos())
-    print("DENTRO DEL GET")
+    
+    # Obtener los args y si tiene el date se llama a la funcion get_photos_by_date en el controller db sino se obtienen todas las fotos
+    date_filter = request.args.get('date')
+    
+    if(date_filter):
+        print(f"Filtrando por fecha: {date_filter}")
+        response = rc.get_photos_by_date(date_filter)
+    else:
+        print("Obteniendo todas las fotos")
+        response = (rc.get_all_photos())
+    
     print("Response: ", response)
     return jsonify(response), 200
 
