@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
     loadUsers();
 
@@ -54,7 +56,7 @@ async function deleteUser(email) {
     if (!confirm(`¿Seguro que quieres eliminar a ${email}?`)) return;
 
     try {
-        const response = await fetch("/delete", {
+        const response = await fetch("/login/delete", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

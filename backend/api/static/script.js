@@ -1,3 +1,9 @@
+
+document.getElementById("adminBtn").addEventListener("click", () => {
+    // Redirige a la ruta del panel de admin
+    window.location.href = "/dashboard/admin"; 
+});
+
 async function pedir_fotos() {
     let gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
