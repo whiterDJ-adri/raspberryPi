@@ -24,11 +24,11 @@ def admin_dashboard():
     
     return redirect(url_for("dashboard.dashboard"))
 
-@dashboard_bp.route("/admin")
+@dashboard_bp.route("/admin/boton")
 def admin_panel():
     # Solo admins
     if not session.get("isAdmin"):
         return "No tienes permiso para acceder aquí", 403
 
-    return render_template("adminPanel.html")
+    return render_template("components/user_management.html")
 
