@@ -1,18 +1,17 @@
-# Spanish translations for PROJECT.
+# Translations template for PROJECT.
 # Copyright (C) 2025 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2025-10-16 19:57+0200\n"
-"PO-Revision-Date: 2025-10-10 09:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,11 +23,11 @@ msgstr "Panel de Administración"
 
 #: templates/dashboard_admin.html:22
 msgid "nav_camera_title"
-msgstr "Panel de Cámara"
+msgstr "Cámara de Movimiento"
 
 #: templates/dashboard_admin.html:30
 msgid "nav_user_info"
-msgstr "Usuario"
+msgstr "Información de Usuario"
 
 #: templates/dashboard_admin.html:30
 msgid "nav_user_admin"
@@ -48,11 +47,11 @@ msgstr "Fecha"
 
 #: templates/dashboard_admin.html:51
 msgid "filter_btn_streaming"
-msgstr "Ver en tiempo real"
+msgstr "Transmisión"
 
 #: templates/dashboard_admin.html:55
 msgid "filter_btn_delete_all"
-msgstr "Eliminar todas"
+msgstr "Eliminar todo"
 
 #: templates/dashboard_admin.html:61
 msgid "filter_btn_refresh"
@@ -64,11 +63,11 @@ msgstr "Eliminar"
 
 #: templates/dashboard_admin.html:76
 msgid "list_card_header"
-msgstr "Capturas de movimiento"
+msgstr "Lista"
 
 #: templates/dashboard_admin.html:77
 msgid "list_photo_count_plural"
-msgstr "fotos"
+msgstr "Fotos"
 
 #: templates/dashboard_admin.html:92
 msgid "modal_image_title"
@@ -76,7 +75,7 @@ msgstr "Imagen"
 
 #: templates/dashboard_admin.html:96
 msgid "modal_image_alt"
-msgstr "Imagen ampliada"
+msgstr "Imagen"
 
 #: templates/dashboard_admin.html:99
 msgid "modal_btn_close"
@@ -96,7 +95,7 @@ msgstr "Tipo de usuario"
 
 #: templates/dashboard_admin.html:117
 msgid "login_select_placeholder"
-msgstr "Seleccionar..."
+msgstr "Seleccione una opción"
 
 #: templates/dashboard_admin.html:118
 msgid "login_option_admin"
@@ -112,7 +111,7 @@ msgstr "Contraseña"
 
 #: templates/dashboard_admin.html:126
 msgid "login_btn_submit"
-msgstr "Entrar"
+msgstr "Iniciar sesión"
 
 #: templates/components/user_management.html:7
 msgid "Panel de Administración"
@@ -140,7 +139,7 @@ msgstr "Cerrar Sesión"
 
 #: templates/components/user_management.html:35
 msgid "Lista de Usuarios"
-msgstr "Lista de usuarios"
+msgstr "Lista de Usuarios"
 
 #: templates/components/user_management.html:41
 msgid "Nombre"
@@ -148,7 +147,7 @@ msgstr "Nombre"
 
 #: templates/components/user_management.html:42
 msgid "Email"
-msgstr "Email"
+msgstr "Correo electrónico"
 
 #: templates/components/user_management.html:43
 msgid "Administrador"
@@ -165,58 +164,3 @@ msgstr "Vídeo en directo"
 #: templates/components/video_streaming.html:47
 msgid "Tomar Instantanea"
 msgstr "Tomar instantánea"
-
-#~ msgid "Panel de cámara"
-#~ msgstr "Panel de cámara"
-
-#~ msgid "Filtros"
-#~ msgstr "Filtros"
-
-#~ msgid "Fecha"
-#~ msgstr "Fecha"
-
-#~ msgid "Ver en tiempo real"
-#~ msgstr "Ver en tiempo real"
-
-#~ msgid "Eliminar Todas"
-#~ msgstr "Eliminar Todas"
-
-#~ msgid "Actualizar"
-#~ msgstr "Actualizar"
-
-#~ msgid "Capturas de Movimiento"
-#~ msgstr "Capturas de Movimiento"
-
-#~ msgid "fotos"
-#~ msgstr "fotos"
-
-#~ msgid "Imagen"
-#~ msgstr "Imagen"
-
-#~ msgid "Imagen ampliada"
-#~ msgstr "Imagen ampliada"
-
-#~ msgid "Cerrar"
-#~ msgstr "Cerrar"
-
-#~ msgid "Descargar"
-#~ msgstr "Descargar"
-
-#~ msgid "Iniciar Sesión"
-#~ msgstr "Iniciar Sesión"
-
-#~ msgid "Tipo de Usuario"
-#~ msgstr "Tipo de Usuario"
-
-#~ msgid "Seleccionar..."
-#~ msgstr "Seleccionar..."
-
-#~ msgid "Cliente"
-#~ msgstr "Cliente"
-
-#~ msgid "Contraseña"
-#~ msgstr "Contraseña"
-
-#~ msgid "Entrar"
-#~ msgstr "Entrar"
-

@@ -1,1 +1,118 @@
-<h1>Bienvenida</h1>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}" />
+		<title>Cámara de Seguridad - Raspberry Pi</title>
+		<script
+			src="{{ url_for('static', filename='index.js') }}"
+			defer></script>
+	</head>
+	<body class="security-background">
+		<!-- Botón de Login en la esquina superior -->
+		<div class="position-absolute top-0 end-0 p-4">
+			<button
+				class="btn btn-outline-light btn-sm hover-glow"
+				onclick="irLogin()">
+				<i class="bi bi-person-circle me-2"></i>Iniciar Sesión
+			</button>
+		</div>
+
+		<!-- Contenedor principal centrado -->
+		<div
+			class="container-fluid vh-100 d-flex align-items-center justify-content-center p-4">
+			<div class="row w-100 h-100 align-items-center">
+				<!-- Lado izquierdo - Contenido de bienvenida -->
+				<div
+					class="col-lg-6 text-white text-center text-lg-start pb-4 pb-lg-0 animate-fade-in">
+					<div class="px-3">
+						<i class="bi bi-camera-video welcome-icon pb-4"></i>
+						<h1 class="welcome-title text-shadow pb-3">Cámara de Seguridad</h1>
+						<h2 class="welcome-subtitle pb-4">
+							Detección Inteligente de Movimiento
+						</h2>
+						<p class="welcome-description pb-4">
+							Sistema de vigilancia avanzado que detecta y alerta sobre
+							actividad en tiempo real. Mantén tu espacio protegido las 24
+							horas.
+						</p>
+					</div>
+				</div>
+
+				<!-- Lado derecho - Estadísticas rápidas -->
+				<div class="col-lg-6 animate-fade-in">
+					<div class="px-3">
+						<div class="row g-3">
+							<!-- Estado detección de movimiento -->
+							<div class="col-sm-6">
+								<div class="stat-card glass-effect text-white h-100">
+									<div class="stat-card-body p-4">
+										<i
+											class="bi bi-eye stat-icon success animate-pulse pb-2"></i>
+										<h3 class="stat-value pb-2">ACTIVO</h3>
+										<p class="stat-label">Detección Movimiento</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Última alerta registrada -->
+							<div class="col-sm-6">
+								<div class="stat-card glass-effect text-white h-100">
+									<div class="stat-card-body p-4">
+										<i class="bi bi-bell stat-icon warning pb-2"></i>
+										<h3 class="stat-value pb-2">15:30</h3>
+										<p class="stat-label">Última Alerta</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Grabaciones del día -->
+							<div class="col-sm-6">
+								<div class="stat-card glass-effect text-white h-100">
+									<div class="stat-card-body p-4">
+										<i class="bi bi-record-circle stat-icon danger pb-2"></i>
+										<h3 class="stat-value pb-2">12</h3>
+										<p class="stat-label">Grabaciones Hoy</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Calidad de la cámara -->
+							<div class="col-sm-6">
+								<div class="stat-card glass-effect text-white h-100">
+									<div class="stat-card-body p-4">
+										<i class="bi bi-camera stat-icon info pb-2"></i>
+										<h3 class="stat-value pb-2">HD</h3>
+										<p class="stat-label">Calidad Video</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Indicador de seguridad del sistema -->
+						<div class="status-indicator pt-4">
+							<div class="status-badge py-3 px-4">
+								<i class="bi bi-shield-fill-check status-icon pe-2"></i>
+								<span class="status-text">Sistema Seguro</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
