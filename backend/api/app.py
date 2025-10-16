@@ -9,7 +9,7 @@ from routes.dashboard import dashboard_bp
 app = Flask(__name__)
 
 # --- Mongo ---
-app.config['SECRET_KEY'] = 'tu-clave-secreta'
+app.config["SECRET_KEY"] = "tu-clave-secreta"
 app.config["MONGO_URI"] = os.getenv("URL_MONGO")
 mongo = PyMongo(app)
 app.mongo = mongo
@@ -43,9 +43,6 @@ babel = Babel(app, locale_selector=select_locale, timezone_selector=select_timez
 # --- Rutas ---
 @app.route("/")
 def main():
-    if 'email' not in session:
-        print("El usuario debe iniciar sesion o registrarse")
-        return redirect(url_for('login.show_page_login'))
     return render_template("index.html")
 
 
