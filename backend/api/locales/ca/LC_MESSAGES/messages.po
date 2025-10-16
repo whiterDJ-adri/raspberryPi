@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-10 09:56+0200\n"
+"POT-Creation-Date: 2025-10-16 19:57+0200\n"
 "PO-Revision-Date: 2025-10-10 09:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ca\n"
@@ -18,98 +18,205 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app.py:47
-msgid "Panel de cámara"
-msgstr ""
+#: templates/dashboard_admin.html:7
+msgid "page_title"
+msgstr "Títol de la pàgina"
 
-#: templates/index.html:7 templates/index.html:23
+#: templates/dashboard_admin.html:22
+msgid "nav_camera_title"
+msgstr "Càmera"
+
+#: templates/dashboard_admin.html:30
+msgid "nav_user_info"
+msgstr "Informació d'usuari"
+
+#: templates/dashboard_admin.html:30
+msgid "nav_user_admin"
+msgstr "Administració d'usuaris"
+
+#: templates/dashboard_admin.html:32
+msgid "nav_logout_btn"
+msgstr "Tancar Sessió"
+
+#: templates/dashboard_admin.html:42
+msgid "filter_card_header"
+msgstr "Filtres"
+
+#: templates/dashboard_admin.html:46
+msgid "filter_date_label"
+msgstr "Data"
+
+#: templates/dashboard_admin.html:51
+msgid "filter_btn_streaming"
+msgstr "Veure en temps real"
+
+#: templates/dashboard_admin.html:55
+msgid "filter_btn_delete_all"
+msgstr "Eliminar totes"
+
+#: templates/dashboard_admin.html:61
+msgid "filter_btn_refresh"
+msgstr "Actualitzar"
+
+#: templates/dashboard_admin.html:64
+msgid "filter_btn_delete"
+msgstr "Eliminar"
+
+#: templates/dashboard_admin.html:76
+msgid "list_card_header"
+msgstr "Llista"
+
+#: templates/dashboard_admin.html:77
+msgid "list_photo_count_plural"
+msgstr "fotos"
+
+#: templates/dashboard_admin.html:92
+msgid "modal_image_title"
+msgstr "Imatge"
+
+#: templates/dashboard_admin.html:96
+msgid "modal_image_alt"
+msgstr "Imatge ampliada"
+
+#: templates/dashboard_admin.html:99
+msgid "modal_btn_close"
+msgstr "Tancar"
+
+#: templates/dashboard_admin.html:100
+msgid "modal_btn_download"
+msgstr "Descarregar"
+
+#: templates/dashboard_admin.html:110
+msgid "login_modal_title"
+msgstr "Iniciar Sessió"
+
+#: templates/dashboard_admin.html:115
+msgid "login_label_user_type"
+msgstr "Tipus d'usuari"
+
+#: templates/dashboard_admin.html:117
+msgid "login_select_placeholder"
+msgstr "Seleccionar..."
+
+#: templates/dashboard_admin.html:118
+msgid "login_option_admin"
+msgstr "Administrador"
+
+#: templates/dashboard_admin.html:119
+msgid "login_option_client"
+msgstr "Client"
+
+#: templates/dashboard_admin.html:123
+msgid "login_label_password"
+msgstr "Contrasenya"
+
+#: templates/dashboard_admin.html:126
+msgid "login_btn_submit"
+msgstr "Entrar"
+
+#: templates/components/user_management.html:7
+msgid "Panel de Administración"
+msgstr "Panell d'Administració"
+
+#: templates/components/user_management.html:17
+#: templates/components/video_streaming.html:23
 msgid "Cámara de Movimiento"
 msgstr "Càmera de Moviment"
 
-#: templates/index.html:31
+#: templates/components/user_management.html:25
+#: templates/components/video_streaming.html:33
 msgid "Usuario"
 msgstr "Usuari"
 
-#: templates/index.html:31
+#: templates/components/user_management.html:25
+#: templates/components/video_streaming.html:33
 msgid "Admin"
 msgstr "Administrador"
 
-#: templates/index.html:32
+#: templates/components/user_management.html:26
+#: templates/components/video_streaming.html:35
 msgid "Cerrar Sesión"
 msgstr "Tancar Sessió"
 
-#: templates/index.html:44
-msgid "Filtros"
-msgstr "Filtres"
+#: templates/components/user_management.html:35
+msgid "Lista de Usuarios"
+msgstr "Llista d'usuaris"
 
-#: templates/index.html:48
-msgid "Fecha"
-msgstr "Data"
+#: templates/components/user_management.html:41
+msgid "Nombre"
+msgstr "Nom"
 
-#: templates/index.html:53
-msgid "Ver en tiempo real"
-msgstr "Veure en temps real"
+#: templates/components/user_management.html:42
+msgid "Email"
+msgstr "Correu electrònic"
 
-#: templates/index.html:57
-msgid "Eliminar Todas"
-msgstr "Eliminar Totes"
-
-#: templates/index.html:62
-msgid "Actualizar"
-msgstr "Actualitzar"
-
-#: templates/index.html:74
-msgid "Capturas de Movimiento"
-msgstr "Captures de Moviment"
-
-#: templates/index.html:75
-msgid "fotos"
-msgstr "fotos"
-
-#: templates/index.html:92
-msgid "Imagen"
-msgstr "Imatge"
-
-#: templates/index.html:96
-msgid "Imagen ampliada"
-msgstr "Imatge ampliada"
-
-#: templates/index.html:99
-msgid "Cerrar"
-msgstr "Tancar"
-
-#: templates/index.html:100
-msgid "Descargar"
-msgstr "Descarregar"
-
-#: templates/index.html:111
-msgid "Iniciar Sesión"
-msgstr "Iniciar Sessió"
-
-#: templates/index.html:116
-msgid "Tipo de Usuario"
-msgstr "Tipus d'Usuari"
-
-#: templates/index.html:118
-msgid "Seleccionar..."
-msgstr "Seleccionar..."
-
-#: templates/index.html:119
+#: templates/components/user_management.html:43
 msgid "Administrador"
 msgstr "Administrador"
 
-#: templates/index.html:120
-msgid "Cliente"
-msgstr "Client"
+#: templates/components/user_management.html:44
+msgid "Acciones"
+msgstr "Accions"
 
-#: templates/index.html:124
-msgid "Contraseña"
-msgstr "Contrasenya"
+#: templates/components/video_streaming.html:7
+msgid "Video en directo"
+msgstr "Vídeo en directe"
 
-#: templates/index.html:127
-msgid "Entrar"
-msgstr "Entrar"
+#: templates/components/video_streaming.html:47
+msgid "Tomar Instantanea"
+msgstr "Fer instantània"
 
 #~ msgid "Borrar"
 #~ msgstr "Eliminar"
+
+#~ msgid "Panel de cámara"
+#~ msgstr ""
+
+#~ msgid "Filtros"
+#~ msgstr "Filtres"
+
+#~ msgid "Fecha"
+#~ msgstr "Data"
+
+#~ msgid "Ver en tiempo real"
+#~ msgstr "Veure en temps real"
+
+#~ msgid "Eliminar Todas"
+#~ msgstr "Eliminar Totes"
+
+#~ msgid "Actualizar"
+#~ msgstr "Actualitzar"
+
+#~ msgid "Capturas de Movimiento"
+#~ msgstr "Captures de Moviment"
+
+#~ msgid "fotos"
+#~ msgstr "fotos"
+
+#~ msgid "Imagen"
+#~ msgstr "Imatge"
+
+#~ msgid "Imagen ampliada"
+#~ msgstr "Imatge ampliada"
+
+#~ msgid "Cerrar"
+#~ msgstr "Tancar"
+
+#~ msgid "Descargar"
+#~ msgstr "Descarregar"
+
+#~ msgid "Iniciar Sesión"
+#~ msgstr "Iniciar Sessió"
+
+#~ msgid "Seleccionar..."
+#~ msgstr "Seleccionar..."
+
+#~ msgid "Cliente"
+#~ msgstr "Client"
+
+#~ msgid "Contraseña"
+#~ msgstr "Contrasenya"
+
+#~ msgid "Entrar"
+#~ msgstr "Entrar"
 
