@@ -18,11 +18,10 @@ async function pedir_fotos() {
         const response = await fetch(api);
         // Transformamos el objeto que nos devuelve a json
         const data = await response.json();
-        console.log("Data: ", data);
         let rutas = [];
-        
-        data[0].forEach(img => {
+        data.forEach(img => {
             let ruta = `/api/photo/screenshots/${img.filename}`;
+            console.log("Ruta: ", ruta);
             rutas.push(ruta);
         });
 

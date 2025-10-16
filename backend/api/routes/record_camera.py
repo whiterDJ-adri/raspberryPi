@@ -21,7 +21,7 @@ def get_record_controller():
 @record_cam_bp.route("/", methods=["GET"])
 def obtener_foto():
     rc = get_record_controller()
-    response = rc.get_all_photos()
+    response = (rc.get_all_photos())
     print("DENTRO DEL GET")
     print("Response: ", response)
     return jsonify(response), 200
@@ -42,7 +42,7 @@ def add_foto():
 
     validated_data = record_camera_schema.load(data_db)
 
-    missatge_discord.send_message(validated_data)
+    # missatge_discord.send_message(validated_data)
 
     db = get_db_controller()
     result = db.add_photo(validated_data)

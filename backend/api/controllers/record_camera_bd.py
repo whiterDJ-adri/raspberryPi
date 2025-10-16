@@ -12,7 +12,7 @@ class RecordCameraController:
 
     def get_all_photos(self):
         try:
-            photos = self.collection.find({}, {"_id": 1})
+            photos = self.collection.find({}, {"_id": 0})
             return photos
 
         except ConnectionFailure:
