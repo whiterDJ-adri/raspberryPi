@@ -1,7 +1,9 @@
+# from flask_babel import Babel, gettext as _
 import os
-from flask import Flask, render_template, request, session, url_for, redirect
+from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
-from flask_babel import Babel, gettext as _
+from flask_babel import Babel
+
 from routes.record_camera import record_cam_bp
 from routes.login import login_bp
 from routes.dashboard import dashboard_bp
@@ -33,11 +35,7 @@ def select_locale():
     )
 
 
-def select_timezone():
-    return "Europe/Madrid"
-
-
-babel = Babel(app, locale_selector=select_locale, timezone_selector=select_timezone)
+babel = Babel(app, locale_selector=select_locale, timezone_selector="Europe/Madrid")
 
 
 # --- Rutas ---
@@ -46,9 +44,9 @@ def main():
     return render_template("index.html")
 
 
-app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
 app.register_blueprint(login_bp, url_prefix="/login")
 app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
+app.register_blueprint(record_cam_bp, url_prefix="/api/photo")
 
 if __name__ == "__main__":
     app.run(debug=True)

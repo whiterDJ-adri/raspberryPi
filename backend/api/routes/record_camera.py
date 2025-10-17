@@ -1,5 +1,12 @@
 import os
-from flask import Blueprint, jsonify, current_app, request, send_from_directory, Response
+from flask import (
+    Blueprint,
+    jsonify,
+    current_app,
+    request,
+    send_from_directory,
+    Response,
+)
 from schemes import record_camera_schema
 from controllers.record_camera_bd import RecordCameraController
 import services.missatge_discord as missatge_discord
@@ -21,17 +28,17 @@ def get_record_controller():
 @record_cam_bp.route("/", methods=["GET"])
 def obtener_foto():
     rc = get_record_controller()
-    
+
     # Obtener los args y si tiene el date se llama a la funcion get_photos_by_date en el controller db sino se obtienen todas las fotos
-    date_filter = request.args.get('date')
-    
-    if(date_filter):
+    date_filter = request.args.get("date")
+
+    if date_filter:
         print(f"Filtrando por fecha: {date_filter}")
         response = rc.get_photos_by_date(date_filter)
     else:
         print("Obteniendo todas las fotos")
-        response = (rc.get_all_photos())
-    
+        response = rc.get_all_photos()
+
     print("Response: ", response)
     return jsonify(response), 200
 
@@ -51,7 +58,7 @@ def add_foto():
 
     validated_data = record_camera_schema.load(data_db)
 
-    # missatge_discord.send_message(validated_data)
+    missatge_discord.send_message(validated_data)
 
     db = get_db_controller()
     result = db.add_photo(validated_data)
@@ -71,17 +78,15 @@ def borrar_foto(photo_id):
     result = db.delete_photo(photo_id)
     return jsonify(result), result[1]
 
-@record_cam_bp.route('/screenshots/<path:filename>')
-def media(filename):
-    
-    directory = os.path.join(current_app.root_path, 'media/screenshots')
-    
-    return send_from_directory(
-        directory,
-        filename,
-        as_attachment=False
-    )
 
+@record_cam_bp.route("/screenshots/<path:filename>")
+def media(filename):
+    directory = os.path.join(current_app.root_path, "media/screenshots")
+
+    return send_from_directory(directory, filename, as_attachment=False)
+
+
+"""
 @record_cam_bp.route('/video')
 def real_streaming():
     # Devuelve todas las imagenes del make_video al navegador, con el mimetype, se le indica el tipo de archivo que va a estar recibiendo
@@ -90,3 +95,4 @@ def real_streaming():
     # boundary=frame --> Separador entre cada mensaje, en este caso es frame
     return Response(video.make_video(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+"""

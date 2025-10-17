@@ -1,12 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const adminBtn = document.getElementById("adminBtn");
-    if (adminBtn) {
-        adminBtn.addEventListener("click", () => {
-            window.location.href = "/dashboard/admin/boton";
-        });
-    }
-});
-
 async function pedir_fotos() {
     let gallery = document.getElementById("gallery");
     gallery.innerHTML = "";

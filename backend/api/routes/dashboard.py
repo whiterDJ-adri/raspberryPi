@@ -19,7 +19,7 @@ def admin_dashboard():
     return render_template("dashboard_admin.html")
 
 
-@dashboard_bp.route("/admin/boton")
+@dashboard_bp.route("/admin/manage-users")
 @admin_required
 def admin_panel():
     return render_template("components/user_management.html")

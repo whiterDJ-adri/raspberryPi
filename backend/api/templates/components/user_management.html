@@ -14,16 +14,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                {{ _("Cámara de Movimiento") }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                    class="bi bi-camera-video me-2" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+                </svg>
+                {{ _("nav_camera_title") }}
             </a>
-            <div class="ms-auto d-flex align-items-center">
-                <a href="../index.html" class="btn btn-sm btn-outline-light" id="liveBtn">Página Principal</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <a href="/dashboard" class="btn btn-sm btn-outline-light" id="liveBtn">Página Principal</a>
+                <a href="/dashboard/admin/manage-users" class="btn btn-sm btn-outline-light" id="liveBtn">
+                    Página Principal
+                </a>
                 <div class="me-3">
                     <a href="?lang=es" class="btn btn-sm btn-outline-light">ES</a>
                     <a href="?lang=ca" class="btn btn-sm btn-outline-light">CA</a>
                 </div>
-                <span class="text-light me-3" id="userInfo">{{ _("Usuario") }}: <span id="userName">{{ _("Admin") }}</span></span>
-                <button class="btn btn-outline-light btn-sm" id="logoutBtn">{{ _("Cerrar Sesión") }}</button>
+                <span class="text-light me-3" id="userInfo">{{ _("nav_user_info") }}: <span id="userName">{{
+                        _("nav_user_admin")
+                        }}</span></span>
+                <button class="btn btn-outline-light btn-sm" id="logoutBtn">{{ _("nav_logout_btn") }}</button>
             </div>
         </div>
     </nav>
