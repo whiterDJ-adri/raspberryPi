@@ -38,27 +38,33 @@ class RecordCameraController:
         try:
             # Convertir la fecha del formato YYYY-MM-DD a YYYYMMDD que es como esta en la  BD
             # Si viene con guiones, los quitamos
-            if '-' in date_str:
+            if "-" in date_str:
                 # Se pasa el string a objeto fecha
-                date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                date_obj = datetime.strptime(date_str, "%Y-%m-%d")
                 # Se le da el formato
-                date_formatted = date_obj.strftime('%Y%m%d')
+                date_formatted = date_obj.strftime("%Y%m%d")
             else:
                 date_formatted = date_str
-            
+
             print(f"Buscando fotos con fecha: {date_formatted}")
-            
+
             # Crear expresión regular para buscar fechas que comiencen con el patrón en este caso con año-mes-dia porque no nos intreresan las horas
             date_pattern = f"^{date_formatted}"
-            
+
             # Buscar, se usa $regex que es una expresion de busqueda en mongo que  cuadno pones ^ te indica el comienzo es decir se buscan los dates que empiezen por el año-mes-dia obtenido desde js
-            photos = list(self.collection.find(
-                {"date": {"$regex": date_pattern}},
-                {"_id": 0}
-            ))
-            
+            photos = list(
+                self.collection.find({"date": {"$regex": date_pattern}}, {"_id": 0})
+            )
+
             print(f"Fotos encontradas para {date_formatted}: {len(photos)}")
             return photos
-        
+
+        except Exception as e:
+            return {"error": f"Unexpected error: {str(e)}"}, 500
+
+    def remove_all_photos(self):
+        try:
+            self.collection.delete_many({})
+            return {"msg": "All photos removed"}, 200
         except Exception as e:
             return {"error": f"Unexpected error: {str(e)}"}, 500
