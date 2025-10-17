@@ -1,4 +1,39 @@
-# 📋 Documentación Completa - Sistema de Monitoreo Raspberry Pi
+# 📋 Documentación Completa de API - Sistema de Monitoreo Raspberry Pi
+
+## 🚀 Resumen Rápido
+
+### Endpoints Principales
+
+```bash
+# Autenticación
+POST /login/login          # Iniciar sesión
+POST /login/signup         # Registrar usuario
+GET  /login/logout         # Cerrar sesión
+
+# Dashboard
+GET  /dashboard/           # Panel usuario
+GET  /dashboard/admin      # Panel administrador
+
+# Gestión de Fotos
+GET    /api/photo/         # Listar fotos
+POST   /api/photo/         # Subir nueva foto
+DELETE /api/photo/<id>     # Eliminar foto específica
+GET    /api/photo/video    # Stream de video en vivo
+```
+
+### Configuración de Entorno Requerida
+
+```env
+URL_MONGO=mongodb://localhost:27017/security_camera
+WEBHOOK_DISCORD=https://discord.com/api/webhooks/YOUR_WEBHOOK
+SECRET_KEY=tu-clave-secreta-flask
+```
+
+---
+
+## 🎯 Objetivo
+
+Esta documentación detalla todos los endpoints, parámetros, respuestas y flujos de datos del sistema de cámara de seguridad Raspberry Pi, facilitando la integración y el desarrollo de nuevas funcionalidades.
 
 ## 🏗️ Estructura del Proyecto
 
@@ -53,12 +88,14 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 - **Función**: `login()`
 - **Descripción**: Procesa el inicio de sesión
 - **Parámetros JSON**:
+
   ```json
   {
-  	"email": "usuario@email.com",
-  	"password": "contraseña"
+   "email": "usuario@email.com",
+   "password": "contraseña"
   }
   ```
+
 - **Funcionalidad**:
   - Valida credenciales contra la base de datos
   - Crea sesión de usuario
@@ -72,14 +109,16 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 - **Función**: `signup()`
 - **Descripción**: Registra un nuevo usuario
 - **Parámetros JSON**:
+
   ```json
   {
-  	"name": "Nombre Usuario",
-  	"email": "usuario@email.com",
-  	"password": "contraseña123",
-  	"isAdmin": false
+   "name": "Nombre Usuario",
+   "email": "usuario@email.com",
+   "password": "contraseña123",
+   "isAdmin": false
   }
   ```
+
 - **Funcionalidad**:
   - Valida datos usando `user_schema`
   - Verifica que el usuario no exista
@@ -100,11 +139,13 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 - **Función**: `delete_use()`
 - **Descripción**: Elimina un usuario
 - **Parámetros JSON**:
+
   ```json
   {
-  	"email": "usuario@email.com"
+   "email": "usuario@email.com"
   }
   ```
+
 - **Respuesta**: `200` con mensaje de confirmación
 
 #### `GET /login/users`
@@ -112,13 +153,14 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 - **Función**: `get_all_users()`
 - **Descripción**: Obtiene lista de todos los usuarios
 - **Respuesta**: Array JSON con usuarios:
+
   ```json
   [
-  	{
-  		"name": "Nombre",
-  		"email": "email@example.com",
-  		"isAdmin": false
-  	}
+   {
+    "name": "Nombre",
+    "email": "email@example.com",
+    "isAdmin": false
+   }
   ]
   ```
 
@@ -298,12 +340,14 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 
 - **Descripción**: Envía notificaciones a Discord
 - **Parámetros**:
+
   ```python
   {
     "date": "2025-10-16T15:30:00",  # ISO format
     "filename": "20251016_153000.jpg"
   }
   ```
+
 - **Funcionalidad**:
   - Parsea fecha ISO y convierte a hora de Madrid
   - Formatea mensaje con fecha y nombre de archivo
@@ -387,7 +431,7 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 - `/login` → `login_bp`
 - `/dashboard` → `dashboard_bp`
 
-### Variables de Entorno Requeridas
+### Configuración de Entorno del Servidor
 
 - `URL_MONGO`: Conexión a MongoDB
 - `WEBHOOK_DISCORD`: URL del webhook de Discord
@@ -403,6 +447,122 @@ Este proyecto es un sistema de monitoreo con cámara implementado en Flask, que 
 5. **Captura** → Foto guardada, registrada en BD, notificación Discord
 6. **Visualización** → Stream en tiempo real disponible en `/api/photo/video`
 7. **Gestión** → Admins pueden ver/eliminar fotos y usuarios
+
+---
+
+## 🆘 Mini-Manual de Errores Comunes
+
+### Error 401 - No autorizado
+
+```bash
+# Problema: Token de sesión expirado o inválido
+{
+  "error": "No autorizado",
+  "message": "Debes iniciar sesión"
+}
+
+# Solución:
+curl -X POST http://localhost:5000/login/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "usuario", "password": "contraseña"}'
+```
+
+### Error 403 - Acceso denegado
+
+```bash
+# Problema: Usuario sin permisos de administrador
+{
+  "error": "Acceso denegado",
+  "message": "Permisos insuficientes"
+}
+
+# Solución: Verificar rol de usuario en MongoDB
+db.users.find({"username": "usuario"})
+```
+
+### Error 404 - Foto no encontrada
+
+```bash
+# Problema: ID de foto inexistente
+{
+  "error": "Foto no encontrada",
+  "message": "La foto con ID 507f1f77bcf86cd799439011 no existe"
+}
+
+# Solución: Verificar IDs disponibles
+curl http://localhost:5000/api/photo/
+```
+
+### Error 500 - Error del servidor
+
+```bash
+# Problema: Error en conexión a MongoDB o cámara
+{
+  "error": "Error interno del servidor",
+  "message": "Error de conexión a la base de datos"
+}
+
+# Solución: Verificar servicios
+# 1. MongoDB
+sudo systemctl status mongod
+
+# 2. Conexión de cámara
+python -c "import cv2; cap = cv2.VideoCapture(0); print('Cámara OK' if cap.isOpened() else 'Error cámara')"
+
+# 3. Variables de entorno
+echo $URL_MONGO
+```
+
+### Problemas de Streaming
+
+```bash
+# Problema: Video stream no funciona
+# Verificar cámara disponible
+ls /dev/video*
+
+# Probar captura directa
+python -c "
+import cv2
+cap = cv2.VideoCapture(0)
+ret, frame = cap.read()
+print('Stream OK' if ret else 'Error stream')
+cap.release()
+"
+
+# Reiniciar servicio si es necesario
+sudo systemctl restart tu-servicio-camera
+```
+
+### Debugging de Discord Webhook
+
+```bash
+# Problema: Notificaciones no llegan a Discord
+# Probar webhook manualmente
+curl -X POST $WEBHOOK_DISCORD \
+  -H "Content-Type: application/json" \
+  -d '{"content": "Test desde API"}'
+
+# Verificar logs de la aplicación
+tail -f app.log | grep -i discord
+```
+
+---
+
+## 📞 Soporte y Contacto
+
+Para problemas adicionales:
+
+1. **Logs de aplicación**: Revisar `app.log` en el directorio del proyecto
+2. **Logs del sistema**: `journalctl -u tu-servicio -f`
+3. **Estado de servicios**: `systemctl status mongod nginx`
+4. **Diagnóstico de red**: `netstat -tlnp | grep :5000`
+
+## 🔗 Referencias Adicionales
+
+- [Documentación de Flask](https://flask.palletsprojects.com/)
+- [MongoDB Documentation](https://docs.mongodb.com/)
+- [OpenCV Python](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html)
+- [Discord Webhooks](https://discord.com/developers/docs/resources/webhook)
 
 ## 🛡️ Seguridad
 
