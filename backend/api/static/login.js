@@ -17,6 +17,11 @@ form.addEventListener("submit", async (e) => {
 
     const data = await response.json();
     console.log("Respuesta del servidor:", data);
+    if (!data.redirect){
+      const msgError = document.querySelectorAll(".msgError")[0]
+      msgError.innerHTML = "Error en las credenciales."
+      return;
+    }
     window.location.href = data.redirect;
   } catch (error) {
     console.error("Error en el fetch:", error);

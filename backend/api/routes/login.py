@@ -93,6 +93,16 @@ def logout():
 def delete_use():
     data = request.json
     email = data.get("email")
+    
+        # Verifica si hay sesión activa
+    current_email = session.get("email")
+    if not current_email:
+        return jsonify({"message": "Sesión no iniciada."}), 401
+
+    # Impide que un admin se elimine a sí mismo
+    if email == current_email:
+        return jsonify({"message": "No puedes eliminar tu propio usuario."}), 403
+    
     login_controller = get_login_controller()
     login_controller.delete_user(email)
 
