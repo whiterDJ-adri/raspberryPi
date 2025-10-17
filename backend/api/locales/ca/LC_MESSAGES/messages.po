@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-14 10:26+0200\n"
+"POT-Creation-Date: 2025-10-17 13:07+0200\n"
 "PO-Revision-Date: 2025-10-10 09:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ca\n"
@@ -18,253 +18,271 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: templates/dashboard_admin.html:7
+#: templates/dashboard_admin.html:8
 msgid "page_title"
-msgstr "Títol de la pàgina"
+msgstr "Panell d'Administració"
 
-#: templates/dashboard_admin.html:22
+#: templates/components/user_management.html:22
+#: templates/dashboard_admin.html:29 templates/dashboard_user.html:29
 msgid "nav_camera_title"
-msgstr "Càmera"
+msgstr "Panell de Càmera"
 
-#: templates/dashboard_admin.html:29
+#: templates/components/user_management.html:7
+#: templates/dashboard_admin.html:42
+msgid "Panel de Administración"
+msgstr "Panell d'Administració"
+
+#: templates/components/user_management.html:33
+#: templates/dashboard_admin.html:59 templates/dashboard_user.html:47
 msgid "nav_user_info"
-msgstr "Informació d'usuari"
+msgstr "Usuari"
 
-#: templates/dashboard_admin.html:29
+#: templates/components/user_management.html:34
+#: templates/dashboard_admin.html:60
 msgid "nav_user_admin"
-msgstr "Administració d'usuaris"
+msgstr "Administrador"
 
-#: templates/dashboard_admin.html:31
+#: templates/components/user_management.html:36
+#: templates/dashboard_admin.html:65 templates/dashboard_user.html:53
 msgid "nav_logout_btn"
 msgstr "Tancar Sessió"
 
-#: templates/dashboard_admin.html:41
+#: templates/dashboard_admin.html:78
 msgid "filter_card_header"
 msgstr "Filtres"
 
-#: templates/dashboard_admin.html:45
+#: templates/dashboard_admin.html:86 templates/dashboard_user.html:73
 msgid "filter_date_label"
 msgstr "Data"
 
-#: templates/dashboard_admin.html:50
+#: templates/dashboard_admin.html:98
+msgid "Aplicar"
+msgstr "Aplicar"
+
+#: templates/dashboard_admin.html:103 templates/dashboard_user.html:89
+msgid "Acciones Rápidas"
+msgstr "Accions Ràpides"
+
+#: templates/dashboard_admin.html:113 templates/dashboard_user.html:97
 msgid "filter_btn_streaming"
 msgstr "Veure en temps real"
 
-#: templates/dashboard_admin.html:54
-msgid "filter_btn_delete_all"
-msgstr "Eliminar totes"
-
-#: templates/dashboard_admin.html:60
+#: templates/dashboard_admin.html:121 templates/dashboard_user.html:105
 msgid "filter_btn_refresh"
 msgstr "Actualitzar"
 
-#: templates/dashboard_admin.html:63
+#: templates/dashboard_admin.html:129
 msgid "filter_btn_delete"
 msgstr "Eliminar"
 
-#: templates/dashboard_admin.html:75
-msgid "list_card_header"
-msgstr "Llista"
+#: templates/dashboard_admin.html:137
+msgid "filter_btn_delete_all"
+msgstr "Eliminar totes"
 
-#: templates/dashboard_admin.html:76
+#: templates/dashboard_admin.html:148 templates/dashboard_user.html:116
+msgid "Transmisión en Vivo"
+msgstr "Transmissió en Directe"
+
+#: templates/dashboard_admin.html:172 templates/dashboard_user.html:140
+msgid "Transmisión desactivada"
+msgstr "Transmissió desactivada"
+
+#: templates/dashboard_admin.html:174
+#, fuzzy
+msgid ""
+"Haz clic en 'Iniciar Transmisión' para ver el\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tvideo"
+msgstr "Fes clic a 'Iniciar Transmissió' per veure el vídeo"
+
+#: templates/dashboard_admin.html:192
+msgid "list_card_header"
+msgstr "Captures de moviment"
+
+#: templates/dashboard_admin.html:196 templates/dashboard_user.html:163
 msgid "list_photo_count_plural"
 msgstr "fotos"
 
-#: templates/dashboard_admin.html:91
+#: templates/dashboard_admin.html:208 templates/dashboard_user.html:174
+msgid "Cargando fotos..."
+msgstr "Carregant fotos..."
+
+#: templates/dashboard_admin.html:227 templates/dashboard_user.html:195
 msgid "modal_image_title"
 msgstr "Imatge"
 
-#: templates/dashboard_admin.html:95
+#: templates/dashboard_admin.html:237 templates/dashboard_user.html:205
 msgid "modal_image_alt"
 msgstr "Imatge ampliada"
 
-#: templates/dashboard_admin.html:98
+#: templates/dashboard_admin.html:247 templates/dashboard_user.html:215
 msgid "modal_btn_close"
 msgstr "Tancar"
 
-#: templates/dashboard_admin.html:99
+#: templates/dashboard_admin.html:254 templates/dashboard_user.html:222
 msgid "modal_btn_download"
 msgstr "Descarregar"
 
-#: templates/dashboard_admin.html:109
+#: templates/dashboard_admin.html:270
 msgid "login_modal_title"
-msgstr "Iniciar Sessió"
+msgstr "Iniciar sessió"
 
-#: templates/dashboard_admin.html:114
+#: templates/dashboard_admin.html:278
 msgid "login_label_user_type"
 msgstr "Tipus d'usuari"
 
-#: templates/dashboard_admin.html:116
+#: templates/dashboard_admin.html:284
 msgid "login_select_placeholder"
 msgstr "Seleccionar..."
 
-#: templates/dashboard_admin.html:117
+#: templates/dashboard_admin.html:285
 msgid "login_option_admin"
 msgstr "Administrador"
 
-#: templates/dashboard_admin.html:118
+#: templates/dashboard_admin.html:287
 msgid "login_option_client"
 msgstr "Client"
 
-#: templates/dashboard_admin.html:122
+#: templates/dashboard_admin.html:295
 msgid "login_label_password"
 msgstr "Contrasenya"
 
-#: templates/dashboard_admin.html:125
+#: templates/dashboard_admin.html:306
 msgid "login_btn_submit"
 msgstr "Entrar"
 
-#: templates/index.html:7 templates/index.html:23
-msgid "Cámara de Movimiento"
-msgstr "Càmera de Moviment"
+#: templates/dashboard_user.html:8
+msgid "page_title_user"
+msgstr "Panell d'Usuari"
 
-#: templates/index.html:31
-msgid "Usuario"
+#: templates/dashboard_user.html:48
+msgid "nav_user_normal"
 msgstr "Usuari"
 
-#: templates/index.html:31
-msgid "Admin"
-msgstr "Administrador"
+#: templates/dashboard_user.html:66
+msgid "Panel de Control"
+msgstr "Panell de Control"
 
-#: templates/index.html:33
-msgid "Cerrar Sesión"
-msgstr "Tancar Sessió"
+#: templates/dashboard_user.html:142
+msgid "Haz clic en 'Iniciar Transmisión' para ver el video"
+msgstr "Fes clic a 'Iniciar Transmissió' per veure el vídeo"
 
-#: templates/index.html:45
-msgid "Filtros"
-msgstr ""
-
-#: templates/index.html:49
-msgid "Fecha"
-msgstr ""
-
-#: templates/index.html:54
-msgid ""
-"Ver en\n"
-"                                    tiempo real"
-msgstr ""
-
-#: templates/index.html:59
-msgid "Eliminar Todas"
-msgstr ""
-
-#: templates/index.html:65
-msgid "Actualizar"
-msgstr ""
-
-#: templates/index.html:68
-msgid "Borrar"
-msgstr ""
-
-#: templates/index.html:80
-#, fuzzy
+#: templates/dashboard_user.html:159
 msgid "Capturas de Movimiento"
-msgstr "Càmera de Moviment"
+msgstr "Captures de Moviment"
 
-#: templates/index.html:81
-msgid "fotos"
-msgstr ""
-
-#: templates/index.html:98
-msgid "Imagen"
-msgstr ""
-
-#: templates/index.html:102
-msgid "Imagen ampliada"
-msgstr ""
-
-#: templates/index.html:105
+#: templates/components/user_management.html:45
 #, fuzzy
-msgid "Cerrar"
-msgstr "Tancar Sessió"
-
-#: templates/index.html:106
-msgid "Descargar"
-msgstr ""
-
-#: templates/index.html:117
-#, fuzzy
-msgid "Iniciar Sesión"
-msgstr "Tancar Sessió"
-
-#: templates/index.html:122
-#, fuzzy
-msgid "Tipo de Usuario"
+msgid "Lista de Usuarios"
 msgstr "Llista d'usuaris"
 
-#: templates/index.html:124
-msgid "Seleccionar..."
-msgstr ""
+#: templates/components/user_management.html:47
+#, fuzzy
+msgid "Crear Usuario"
+msgstr "Usuari"
 
-#: templates/index.html:125
+#: templates/components/user_management.html:54
+#: templates/components/user_management.html:80
+msgid "Nombre"
+msgstr "Nombre"
+
+#: templates/components/user_management.html:55
+#: templates/components/user_management.html:84
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: templates/components/user_management.html:56
 msgid "Administrador"
 msgstr "Administrador"
 
-#: templates/index.html:126
-msgid "Cliente"
-msgstr ""
+#: templates/components/user_management.html:57
+msgid "Acciones"
+msgstr "Accions"
 
-#: templates/index.html:130
+#: templates/components/user_management.html:88
 msgid "Contraseña"
-msgstr ""
+msgstr "Contrasenya"
 
-#: templates/index.html:133
-msgid "Entrar"
-msgstr ""
+#: templates/components/user_management.html:98
+msgid "Cancelar"
+msgstr "Cancel·lar"
+
+#: templates/components/video_streaming.html:7
+msgid "Video en directo"
+msgstr "Vídeo en directo"
+
+#: templates/components/video_streaming.html:23
+msgid "Cámara de Movimiento"
+msgstr "Càmera de Moviment"
+
+#: templates/components/video_streaming.html:33
+msgid "Usuario"
+msgstr "Usuari"
+
+#: templates/components/video_streaming.html:33
+msgid "Admin"
+msgstr "Administrador"
+
+#: templates/components/video_streaming.html:35
+msgid "Cerrar Sesión"
+msgstr "Tancar Sessió"
+
+#: templates/components/video_streaming.html:47
+msgid "Tomar Instantanea"
+msgstr "Tomar instantánea"
 
 #~ msgid "Borrar"
-#~ msgstr "Eliminar"
+#~ msgstr ""
 
 #~ msgid "Panel de cámara"
 #~ msgstr ""
 
 #~ msgid "Filtros"
-#~ msgstr "Filtres"
+#~ msgstr ""
 
 #~ msgid "Fecha"
-#~ msgstr "Data"
+#~ msgstr ""
 
 #~ msgid "Ver en tiempo real"
 #~ msgstr "Veure en temps real"
 
 #~ msgid "Eliminar Todas"
-#~ msgstr "Eliminar Totes"
+#~ msgstr ""
 
 #~ msgid "Actualizar"
-#~ msgstr "Actualitzar"
+#~ msgstr ""
 
 #~ msgid "Capturas de Movimiento"
-#~ msgstr "Captures de Moviment"
+#~ msgstr "Càmera de Moviment"
 
 #~ msgid "fotos"
-#~ msgstr "fotos"
+#~ msgstr ""
 
 #~ msgid "Imagen"
-#~ msgstr "Imatge"
+#~ msgstr ""
 
 #~ msgid "Imagen ampliada"
-#~ msgstr "Imatge ampliada"
+#~ msgstr ""
 
 #~ msgid "Cerrar"
-#~ msgstr "Tancar"
+#~ msgstr "Tancar Sessió"
 
 #~ msgid "Descargar"
-#~ msgstr "Descarregar"
+#~ msgstr ""
 
 #~ msgid "Iniciar Sesión"
-#~ msgstr "Iniciar Sessió"
+#~ msgstr "Tancar Sessió"
 
 #~ msgid "Seleccionar..."
-#~ msgstr "Seleccionar..."
+#~ msgstr ""
 
 #~ msgid "Cliente"
-#~ msgstr "Client"
+#~ msgstr ""
 
 #~ msgid "Contraseña"
-#~ msgstr "Contrasenya"
+#~ msgstr ""
 
 #~ msgid "Entrar"
-#~ msgstr "Entrar"
+#~ msgstr ""
 
 #~ msgid "Panel de Administración"
 #~ msgstr "Panell d'Administració"
@@ -283,4 +301,9 @@ msgstr ""
 
 #~ msgid "Tomar Instantanea"
 #~ msgstr "Fer instantània"
+
+#~ msgid ""
+#~ "Ver en\n"
+#~ "                                    tiempo real"
+#~ msgstr ""
 

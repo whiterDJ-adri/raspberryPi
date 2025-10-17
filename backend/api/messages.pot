@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-10-16 19:57+0200\n"
+"POT-Creation-Date: 2025-10-17 13:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,150 +17,212 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: templates/dashboard_admin.html:7
+#: templates/dashboard_admin.html:8
 msgid "page_title"
-msgstr "Panel de Administración"
+msgstr ""
 
-#: templates/dashboard_admin.html:22
+#: templates/components/user_management.html:22
+#: templates/dashboard_admin.html:29 templates/dashboard_user.html:29
 msgid "nav_camera_title"
-msgstr "Cámara de Movimiento"
-
-#: templates/dashboard_admin.html:30
-msgid "nav_user_info"
-msgstr "Información de Usuario"
-
-#: templates/dashboard_admin.html:30
-msgid "nav_user_admin"
-msgstr "Administrador"
-
-#: templates/dashboard_admin.html:32
-msgid "nav_logout_btn"
-msgstr "Cerrar Sesión"
-
-#: templates/dashboard_admin.html:42
-msgid "filter_card_header"
-msgstr "Filtros"
-
-#: templates/dashboard_admin.html:46
-msgid "filter_date_label"
-msgstr "Fecha"
-
-#: templates/dashboard_admin.html:51
-msgid "filter_btn_streaming"
-msgstr "Transmisión"
-
-#: templates/dashboard_admin.html:55
-msgid "filter_btn_delete_all"
-msgstr "Eliminar todo"
-
-#: templates/dashboard_admin.html:61
-msgid "filter_btn_refresh"
-msgstr "Actualizar"
-
-#: templates/dashboard_admin.html:64
-msgid "filter_btn_delete"
-msgstr "Eliminar"
-
-#: templates/dashboard_admin.html:76
-msgid "list_card_header"
-msgstr "Lista"
-
-#: templates/dashboard_admin.html:77
-msgid "list_photo_count_plural"
-msgstr "Fotos"
-
-#: templates/dashboard_admin.html:92
-msgid "modal_image_title"
-msgstr "Imagen"
-
-#: templates/dashboard_admin.html:96
-msgid "modal_image_alt"
-msgstr "Imagen"
-
-#: templates/dashboard_admin.html:99
-msgid "modal_btn_close"
-msgstr "Cerrar"
-
-#: templates/dashboard_admin.html:100
-msgid "modal_btn_download"
-msgstr "Descargar"
-
-#: templates/dashboard_admin.html:110
-msgid "login_modal_title"
-msgstr "Iniciar sesión"
-
-#: templates/dashboard_admin.html:115
-msgid "login_label_user_type"
-msgstr "Tipo de usuario"
-
-#: templates/dashboard_admin.html:117
-msgid "login_select_placeholder"
-msgstr "Seleccione una opción"
-
-#: templates/dashboard_admin.html:118
-msgid "login_option_admin"
-msgstr "Administrador"
-
-#: templates/dashboard_admin.html:119
-msgid "login_option_client"
-msgstr "Cliente"
-
-#: templates/dashboard_admin.html:123
-msgid "login_label_password"
-msgstr "Contraseña"
-
-#: templates/dashboard_admin.html:126
-msgid "login_btn_submit"
-msgstr "Iniciar sesión"
+msgstr ""
 
 #: templates/components/user_management.html:7
+#: templates/dashboard_admin.html:42
 msgid "Panel de Administración"
-msgstr "Panel de Administración"
+msgstr ""
 
-#: templates/components/user_management.html:17
-#: templates/components/video_streaming.html:23
-msgid "Cámara de Movimiento"
-msgstr "Cámara de Movimiento"
+#: templates/components/user_management.html:33
+#: templates/dashboard_admin.html:59 templates/dashboard_user.html:47
+msgid "nav_user_info"
+msgstr ""
 
-#: templates/components/user_management.html:25
-#: templates/components/video_streaming.html:33
-msgid "Usuario"
-msgstr "Usuario"
+#: templates/components/user_management.html:34
+#: templates/dashboard_admin.html:60
+msgid "nav_user_admin"
+msgstr ""
 
-#: templates/components/user_management.html:25
-#: templates/components/video_streaming.html:33
-msgid "Admin"
-msgstr "Administrador"
+#: templates/components/user_management.html:36
+#: templates/dashboard_admin.html:65 templates/dashboard_user.html:53
+msgid "nav_logout_btn"
+msgstr ""
 
-#: templates/components/user_management.html:26
-#: templates/components/video_streaming.html:35
-msgid "Cerrar Sesión"
-msgstr "Cerrar Sesión"
+#: templates/dashboard_admin.html:78
+msgid "filter_card_header"
+msgstr ""
 
-#: templates/components/user_management.html:35
+#: templates/dashboard_admin.html:86 templates/dashboard_user.html:73
+msgid "filter_date_label"
+msgstr ""
+
+#: templates/dashboard_admin.html:98
+msgid "Aplicar"
+msgstr ""
+
+#: templates/dashboard_admin.html:103 templates/dashboard_user.html:89
+msgid "Acciones Rápidas"
+msgstr ""
+
+#: templates/dashboard_admin.html:113 templates/dashboard_user.html:97
+msgid "filter_btn_streaming"
+msgstr ""
+
+#: templates/dashboard_admin.html:121 templates/dashboard_user.html:105
+msgid "filter_btn_refresh"
+msgstr ""
+
+#: templates/dashboard_admin.html:129
+msgid "filter_btn_delete"
+msgstr ""
+
+#: templates/dashboard_admin.html:137
+msgid "filter_btn_delete_all"
+msgstr ""
+
+#: templates/dashboard_admin.html:148 templates/dashboard_user.html:116
+msgid "Transmisión en Vivo"
+msgstr ""
+
+#: templates/dashboard_admin.html:172 templates/dashboard_user.html:140
+msgid "Transmisión desactivada"
+msgstr ""
+
+#: templates/dashboard_admin.html:174
+msgid ""
+"Haz clic en 'Iniciar Transmisión' para ver el\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tvideo"
+msgstr ""
+
+#: templates/dashboard_admin.html:192
+msgid "list_card_header"
+msgstr ""
+
+#: templates/dashboard_admin.html:196 templates/dashboard_user.html:163
+msgid "list_photo_count_plural"
+msgstr ""
+
+#: templates/dashboard_admin.html:208 templates/dashboard_user.html:174
+msgid "Cargando fotos..."
+msgstr ""
+
+#: templates/dashboard_admin.html:227 templates/dashboard_user.html:195
+msgid "modal_image_title"
+msgstr ""
+
+#: templates/dashboard_admin.html:237 templates/dashboard_user.html:205
+msgid "modal_image_alt"
+msgstr ""
+
+#: templates/dashboard_admin.html:247 templates/dashboard_user.html:215
+msgid "modal_btn_close"
+msgstr ""
+
+#: templates/dashboard_admin.html:254 templates/dashboard_user.html:222
+msgid "modal_btn_download"
+msgstr ""
+
+#: templates/dashboard_admin.html:270
+msgid "login_modal_title"
+msgstr ""
+
+#: templates/dashboard_admin.html:278
+msgid "login_label_user_type"
+msgstr ""
+
+#: templates/dashboard_admin.html:284
+msgid "login_select_placeholder"
+msgstr ""
+
+#: templates/dashboard_admin.html:285
+msgid "login_option_admin"
+msgstr ""
+
+#: templates/dashboard_admin.html:287
+msgid "login_option_client"
+msgstr ""
+
+#: templates/dashboard_admin.html:295
+msgid "login_label_password"
+msgstr ""
+
+#: templates/dashboard_admin.html:306
+msgid "login_btn_submit"
+msgstr ""
+
+#: templates/dashboard_user.html:8
+msgid "page_title_user"
+msgstr ""
+
+#: templates/dashboard_user.html:48
+msgid "nav_user_normal"
+msgstr ""
+
+#: templates/dashboard_user.html:66
+msgid "Panel de Control"
+msgstr ""
+
+#: templates/dashboard_user.html:142
+msgid "Haz clic en 'Iniciar Transmisión' para ver el video"
+msgstr ""
+
+#: templates/dashboard_user.html:159
+msgid "Capturas de Movimiento"
+msgstr ""
+
+#: templates/components/user_management.html:45
 msgid "Lista de Usuarios"
-msgstr "Lista de Usuarios"
+msgstr ""
 
-#: templates/components/user_management.html:41
+#: templates/components/user_management.html:47
+msgid "Crear Usuario"
+msgstr ""
+
+#: templates/components/user_management.html:54
+#: templates/components/user_management.html:80
 msgid "Nombre"
-msgstr "Nombre"
+msgstr ""
 
-#: templates/components/user_management.html:42
+#: templates/components/user_management.html:55
+#: templates/components/user_management.html:84
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr ""
 
-#: templates/components/user_management.html:43
+#: templates/components/user_management.html:56
 msgid "Administrador"
-msgstr "Administrador"
+msgstr ""
 
-#: templates/components/user_management.html:44
+#: templates/components/user_management.html:57
 msgid "Acciones"
-msgstr "Acciones"
+msgstr ""
+
+#: templates/components/user_management.html:88
+msgid "Contraseña"
+msgstr ""
+
+#: templates/components/user_management.html:98
+msgid "Cancelar"
+msgstr ""
 
 #: templates/components/video_streaming.html:7
 msgid "Video en directo"
-msgstr "Vídeo en directo"
+msgstr ""
+
+#: templates/components/video_streaming.html:23
+msgid "Cámara de Movimiento"
+msgstr ""
+
+#: templates/components/video_streaming.html:33
+msgid "Usuario"
+msgstr ""
+
+#: templates/components/video_streaming.html:33
+msgid "Admin"
+msgstr ""
+
+#: templates/components/video_streaming.html:35
+msgid "Cerrar Sesión"
+msgstr ""
 
 #: templates/components/video_streaming.html:47
 msgid "Tomar Instantanea"
-msgstr "Tomar instantánea"
+msgstr ""
+

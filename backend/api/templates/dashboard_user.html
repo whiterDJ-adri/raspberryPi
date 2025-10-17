@@ -18,7 +18,7 @@
 		<script src="{{ url_for('static', filename='script.js') }}"></script>
 	</head>
 
-	<body>
+	<body class="dashboard-page">
 		<!-- Header -->
 		<nav class="navbar navbar-expand-lg navbar-dark navbar-admin">
 			<div class="container-fluid px-4">
@@ -56,17 +56,39 @@
 			</div>
 		</nav>
 
-		<!-- Panel de Usuario -->
+		<!-- Panel de Control y Streaming -->
 		<div class="container-fluid mt-4 px-4">
 			<div class="row g-4">
 				<!-- Panel de Control -->
-				<div class="col-md-4">
+				<div class="col-md-6 col-lg-6">
 					<div class="admin-card">
 						<div class="card-header admin-card-header">
 							<h5 class="mb-0">{{ _("Panel de Control") }}</h5>
 						</div>
 						<div class="card-body p-4">
-							<div class="d-grid gap-3">
+							<div class="mb-4 border-bottom pb-3">
+								<label
+									for="dateFilterUser"
+									class="form-label fw-bold"
+									>{{ _("filter_date_label") }}</label
+								>
+								<div class="input-group">
+									<input
+										type="date"
+										class="form-control date-input"
+										id="dateFilterUser" />
+									<button
+										class="btn btn-outline-primary admin-btn"
+										type="button"
+										onclick="filterDate()">
+										<i class="bi bi-search"></i>
+									</button>
+								</div>
+							</div>
+
+							<h6 class="text-muted mb-3">{{ _("Acciones Rápidas") }}</h6>
+
+							<div class="d-grid gap-2">
 								<button
 									class="btn admin-btn admin-btn-success"
 									id="streamingBtn"
@@ -82,33 +104,56 @@
 									<i class="bi bi-arrow-clockwise me-2"></i>{{
 									_("filter_btn_refresh") }}
 								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-								<div class="mb-3">
-									<label
-										for="dateFilterUser"
-										class="form-label fw-bold"
-										>{{ _("filter_date_label") }}</label
-									>
-									<div class="input-group">
-										<input
-											type="date"
-											class="form-control date-input"
-											id="dateFilterUser" />
-										<button
-											class="btn btn-outline-primary admin-btn"
-											type="button"
-											onclick="filterDate()">
-											<i class="bi bi-search"></i>
-										</button>
+				<!-- Transmisión en Vivo -->
+				<div class="col-md-6 col-lg-6">
+					<div class="admin-card">
+						<div class="card-header admin-card-header">
+							<h5 class="mb-0">{{ _("Transmisión en Vivo") }}</h5>
+						</div>
+						<div class="card-body p-4 text-center">
+							<div class="video-wrapper">
+								<div class="video-container">
+									<img
+										id="videoFeed"
+										src=""
+										class="video-feed"
+										alt="Video Feed"
+										style="display: none" />
+									<div
+										id="videoPlaceholder"
+										class="d-flex align-items-center justify-content-center"
+										style="
+											width: 100%;
+											height: 300px;
+											background: #f8f9fa;
+											border-radius: var(--border-radius);
+										">
+										<div class="text-center text-muted">
+											<i
+												class="bi bi-camera-video-off"
+												style="font-size: 3rem"></i>
+											<p class="mt-3">{{ _("Transmisión desactivada") }}</p>
+											<p class="small">
+												{{ _("Haz clic en 'Iniciar Transmisión' para ver el
+												video") }}
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<!-- Galería de Capturas -->
-				<div class="col-md-8">
+			<!-- Galería de Capturas -->
+			<div class="row mt-4">
+				<div class="col-12">
 					<div class="admin-card">
 						<div
 							class="card-header admin-card-header d-flex justify-content-between align-items-center">
@@ -129,47 +174,6 @@
 										id="loadingMessage">
 										{{ _("Cargando fotos...") }}
 									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Transmisión en Vivo -->
-			<div class="row mt-4">
-				<div class="col-12">
-					<div class="admin-card">
-						<div class="card-header admin-card-header">
-							<h5 class="mb-0">{{ _("Transmisión en Vivo") }}</h5>
-						</div>
-						<div class="card-body p-4 text-center">
-							<div class="video-container d-inline-block">
-								<img
-									id="videoFeed"
-									src=""
-									class="video-feed"
-									alt="Video Feed"
-									style="display: none" />
-								<div
-									id="videoPlaceholder"
-									class="d-flex align-items-center justify-content-center"
-									style="
-										width: 640px;
-										height: 480px;
-										background: #f8f9fa;
-										border-radius: 8px;
-									">
-									<div class="text-center text-muted">
-										<i
-											class="bi bi-camera-video-off"
-											style="font-size: 4rem"></i>
-										<p class="mt-3">{{ _("Transmisión desactivada") }}</p>
-										<p class="small">
-											{{ _("Haz clic en 'Iniciar Transmisión' para ver el
-											video") }}
-										</p>
-									</div>
 								</div>
 							</div>
 						</div>
