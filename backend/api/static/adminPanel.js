@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
     loadUsers();
 
@@ -7,14 +5,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
         logoutBtn.addEventListener("click", async () => {
-            const response = await fetch("/logout");
-            const data = await response.json();
-            alert(data.message);
-            window.location.href = data.redirect;
+            try {
+                const response = await fetch("/logout");
+                const data = await response.json();
+                alert(data.message);
+                window.location.href = data.redirect;
+            } catch (error) {
+                console.error("Error al cerrar sesión:", error);
+                alert("No se pudo cerrar sesión.");
+            }
         });
+    }
+
+    // Crear usuario - botón del modal
+    const saveUserBtn = document.getElementById("saveUserBtn");
+    if (saveUserBtn) {
+        saveUserBtn.addEventListener("click", createUser);
     }
 });
 
+
+// Cargar lista de usuarios
 async function loadUsers() {
     try {
         const response = await fetch("/login/users", { credentials: "include" });
@@ -35,7 +46,7 @@ async function loadUsers() {
             tr.innerHTML = `
                 <td>${user.name}</td>
                 <td>${user.email}</td>
-                <td>${user.isAdmin ? "✔️" : "❌"}</td>
+                <td>${user.isAdmin ? "  Si" : "No"}</td>
                 <td>
                     <button class="btn btn-danger btn-sm" onclick="deleteUser('${user.email}')">
                         Eliminar
@@ -52,6 +63,45 @@ async function loadUsers() {
 }
 
 
+// 🟡 Crear nuevo usuario (desde el modal)
+async function createUser() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const isAdmin = document.getElementById("isAdmin").checked;
+
+    if (!name || !email || !password) {
+        alert("Por favor, completa todos los campos.");
+        return;
+    }
+
+    try {
+        const response = await fetch("/login/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ name, email, password, isAdmin }),
+        });
+
+        const data = await response.json();
+        alert(data.message);
+
+        if (response.ok) {
+            // Cierra el modal y limpia el formulario
+            const modal = bootstrap.Modal.getInstance(document.getElementById("createUserModal"));
+            if (modal) modal.hide();
+
+            document.getElementById("createUserForm").reset();
+            loadUsers(); // Recarga la tabla
+        }
+    } catch (error) {
+        console.error("Error al crear usuario:", error);
+        alert("Error al crear el usuario.");
+    }
+}
+
+
+// 🔴 Eliminar usuario
 async function deleteUser(email) {
     if (!confirm(`¿Seguro que quieres eliminar a ${email}?`)) return;
 
@@ -61,12 +111,16 @@ async function deleteUser(email) {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: "include",
             body: JSON.stringify({ email })
         });
 
         const data = await response.json();
         alert(data.message);
-        loadUsers(); // Recarga la tabla
+
+        if (response.ok) {
+            loadUsers(); // Recarga la tabla
+        }
     } catch (error) {
         console.error("Error al eliminar usuario:", error);
         alert("Error al eliminar el usuario.");
