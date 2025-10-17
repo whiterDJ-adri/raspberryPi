@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (logoutBtn) {
         logoutBtn.addEventListener("click", async () => {
             try {
-                const response = await fetch("/logout");
+                const response = await fetch("/login/logout");
                 const data = await response.json();
                 alert(data.message);
                 window.location.href = data.redirect;
