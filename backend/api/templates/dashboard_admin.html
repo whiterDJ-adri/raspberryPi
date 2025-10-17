@@ -1,164 +1,285 @@
 <!DOCTYPE html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>{{ _("page_title") }}</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}" />
+		<script src="{{ url_for('static', filename='script.js') }}"></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ _("page_title") }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/style.css">
-    <script src="../static/script.js"></script>
-</head>
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark navbar-admin">
+			<div class="container-fluid px-4">
+				<a
+					class="navbar-brand"
+					href="#">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						fill="currentColor"
+						class="bi bi-camera-video me-2"
+						viewBox="0 0 16 16">
+						<path
+							fill-rule="evenodd"
+							d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
+					</svg>
+					{{ _("nav_camera_title") }}
+				</a>
+				<div class="ms-auto d-flex align-items-center gap-3">
+					<a
+						href="/dashboard"
+						class="btn btn-sm btn-outline-light hover-glow"
+						id="liveBtn"
+						>Página Principal</a
+					>
+					<a
+						href="/dashboard/admin/manage-users"
+						class="btn btn-sm btn-outline-light hover-glow"
+						id="liveBtn">
+						{{ _("Panel de Administración") }}
+					</a>
+					<div class="me-3">
+						<a
+							href="?lang=es"
+							class="btn btn-sm btn-outline-light"
+							>ES</a
+						>
+						<a
+							href="?lang=ca"
+							class="btn btn-sm btn-outline-light"
+							>CA</a
+						>
+					</div>
+					<span
+						class="text-light me-3"
+						id="userInfo"
+						>{{ _("nav_user_info") }}:
+						<span id="userName">{{ _("nav_user_admin") }}</span></span
+					>
+					<button
+						class="btn btn-outline-light btn-sm hover-glow"
+						id="logoutBtn">
+						{{ _("nav_logout_btn") }}
+					</button>
+				</div>
+			</div>
+		</nav>
 
-<body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                    class="bi bi-camera-video me-2" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z" />
-                </svg>
-                {{ _("nav_camera_title") }}
-            </a>
-            <div class="ms-auto d-flex align-items-center gap-3">
-                <a href="/dashboard" class="btn btn-sm btn-outline-light" id="liveBtn">Página Principal</a>
-                <a href="/dashboard/admin/manage-users" class="btn btn-sm btn-outline-light" id="liveBtn">
-                    {{ _("Panel de Administración") }}
-                </a>
-                <div class="me-3">
-                    <a href="?lang=es" class="btn btn-sm btn-outline-light">ES</a>
-                    <a href="?lang=ca" class="btn btn-sm btn-outline-light">CA</a>
-                </div>
-                <span class="text-light me-3" id="userInfo">{{ _("nav_user_info") }}: <span id="userName">{{
-                        _("nav_user_admin")
-                        }}</span></span>
-                <button class="btn btn-outline-light btn-sm" id="logoutBtn">{{ _("nav_logout_btn") }}</button>
-            </div>
-        </div>
-    </nav>
+		<!-- Filtros y Imagenes -->
+		<div class="container-fluid mt-4 px-4">
+			<div class="row g-4">
+				<div class="col-md-3 col-lg-2">
+					<div class="admin-card filter-sidebar">
+						<div class="card-header admin-card-header">
+							<h5 class="mb-0">{{ _("filter_card_header") }}</h5>
+						</div>
 
-    <!-- Filtros y Imagenes -->
-    <div class="container-fluid mt-4">
-        <div class="row g-4">
-            <div class="col-md-3 col-lg-2">
-                <div class="card shadow-sm sticky-top" style="top: 1rem;">
+						<div class="card-body p-4">
+							<div class="mb-4 border-bottom pb-3">
+								<label
+									for="dateFilter"
+									class="form-label fw-bold"
+									>{{ _("filter_date_label") }}</label
+								>
+								<div class="input-group">
+									<input
+										type="date"
+										class="form-control date-input"
+										id="dateFilter" />
+									<button
+										class="btn btn-outline-primary admin-btn"
+										type="button"
+										id="applyDate"
+										onclick="filterDate()">
+										{{ _("Aplicar") }}
+									</button>
+								</div>
+							</div>
 
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">{{ _("filter_card_header") }}</h5>
-                    </div>
+							<h6 class="text-muted mb-3">{{ _("Acciones Rápidas") }}</h6>
 
-                    <div class="card-body">
+							<div
+								class="d-grid gap-2"
+								id="adminControls">
+								<button
+									class="btn admin-btn admin-btn-success"
+									id="straming"
+									onclick="streaming()">
+									{{ _("filter_btn_streaming") }}
+								</button>
 
-                        <div class="mb-4 border-bottom pb-3">
-                            <label for="dateFilter" class="form-label fw-bold">{{ _("filter_date_label") }}</label>
-                            <div class="input-group">
-                                <input type="date" class="form-control" id="dateFilter">
-                                <button class="btn btn-outline-primary" type="button" id="applyDate"
-                                    onclick="filterDate()">
-                                    {{ _("Aplicar") }}
-                                </button>
-                            </div>
-                        </div>
+								<button
+									class="btn admin-btn admin-btn-secondary"
+									id="refreshBtn"
+									onclick="pedir_fotos()">
+									{{ _("filter_btn_refresh") }}
+								</button>
 
-                        <h6 class="text-muted mb-3">{{ _("Acciones Rápidas") }}</h6>
+								<hr class="my-2" />
 
-                        <div class="d-grid gap-2" id="adminControls">
+								<button
+									class="deleteButton btn admin-btn admin-btn-danger"
+									id="deleteButton">
+									{{ _("filter_btn_delete") }}
+								</button>
 
-                            <button class="btn btn-success" id="straming" onclick="streaming()">
-                                {{ _("filter_btn_streaming") }}
-                            </button>
+								<button
+									class="btn admin-btn admin-btn-warning"
+									id="deleteAllBtn"
+									onclick="deleteAllPhotos()">
+									{{ _("filter_btn_delete_all") }}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                            <button class="btn btn-secondary" id="refreshBtn" onclick="pedir_fotos()">
-                                {{ _("filter_btn_refresh") }}
-                            </button>
+				<div class="col-md-9 col-lg-10">
+					<div class="admin-card">
+						<div
+							class="card-header admin-card-header d-flex justify-content-between align-items-center">
+							<h5 class="mb-0">{{ _("list_card_header") }}</h5>
+							<span
+								class="badge rounded-pill photo-count-badge"
+								id="photoCount">
+								0 {{ _("list_photo_count_plural") }}
+							</span>
+						</div>
 
-                            <hr class="my-2">
+						<div class="card-body p-4">
+							<div class="photo-gallery">
+								<div
+									class="d-flex flex-wrap gap-3"
+									id="gallery">
+									<p
+										class="text-muted loading-text"
+										id="loadingMessage">
+										{{ _("Cargando fotos...") }}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade modal-custom"
+			id="imageModal"
+			tabindex="-1">
+			<div class="modal-dialog modal-xl modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5
+							class="modal-title"
+							id="modalTitle">
+							{{ _("modal_image_title") }}
+						</h5>
+						<button
+							type="button"
+							class="btn-close btn-close-white"
+							data-bs-dismiss="modal"></button>
+					</div>
+					<div class="modal-body text-center p-4">
+						<img
+							src=""
+							alt="{{ _('modal_image_alt') }}"
+							class="img-fluid"
+							id="modalImage"
+							style="border-radius: 8px" />
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary admin-btn"
+							data-bs-dismiss="modal">
+							{{ _("modal_btn_close") }}
+						</button>
+						<a
+							href="#"
+							class="btn btn-primary admin-btn"
+							id="downloadBtn"
+							download
+							>{{ _("modal_btn_download") }}</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                            <button class="deleteButton btn btn-danger" id="deleteButton">
-                                {{ _("filter_btn_delete") }}
-                            </button>
+		<div
+			class="modal fade modal-custom"
+			id="loginModal"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">{{ _("login_modal_title") }}</h5>
+					</div>
+					<div class="modal-body p-4">
+						<form id="loginForm">
+							<div class="mb-3">
+								<label
+									for="userType"
+									class="form-label"
+									>{{ _("login_label_user_type") }}</label
+								>
+								<select
+									class="form-select date-input"
+									id="userType"
+									required>
+									<option value="">{{ _("login_select_placeholder") }}</option>
+									<option value="admin">{{ _("login_option_admin") }}</option>
+									<option value="cliente">
+										{{ _("login_option_client") }}
+									</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label
+									for="password"
+									class="form-label"
+									>{{ _("login_label_password") }}</label
+								>
+								<input
+									type="password"
+									class="form-control date-input"
+									id="password"
+									required />
+							</div>
+							<button
+								type="submit"
+								class="btn btn-primary admin-btn w-100">
+								{{ _("login_btn_submit") }}
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                            <button class="btn btn-warning" id="deleteAllBtn" onclick="deleteAllPhotos()">
-                                {{ _("filter_btn_delete_all") }}
-                            </button>
-                        </div>
+		<div class="col-12 text-center mt-4">
+			<div class="video-container d-inline-block p-3">
+				<img
+					id="videoFeed"
+					src=""
+					class="video-feed"
+					alt="Video Feed" />
+			</div>
+		</div>
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-9 col-lg-10">
-                <div class="card shadow-sm">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">{{ _("list_card_header") }}</h5>
-                        <span class="badge rounded-pill bg-secondary" id="photoCount">
-                            0 {{ _("list_photo_count_plural") }}
-                        </span>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="d-flex flex-wrap gap-3" id="gallery">
-                            <p class="text-muted" id="loadingMessage">{{ _("Cargando fotos...") }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="modal fade" id="imageModal" tabindex="-1">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">{{ _("modal_image_title") }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="" alt="{{ _('modal_image_alt') }}" class="img-fluid" id="modalImage">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _("modal_btn_close")
-                        }}</button>
-                    <a href="#" class="btn btn-primary" id="downloadBtn" download>{{ _("modal_btn_download") }}</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ _("login_modal_title") }}</h5>
-                </div>
-                <div class="modal-body">
-                    <form id="loginForm">
-                        <div class="mb-3">
-                            <label for="userType" class="form-label">{{ _("login_label_user_type") }}</label>
-                            <select class="form-select" id="userType" required>
-                                <option value="">{{ _("login_select_placeholder") }}</option>
-                                <option value="admin">{{ _("login_option_admin") }}</option>
-                                <option value="cliente">{{ _("login_option_client") }}</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">{{ _("login_label_password") }}</label>
-                            <input type="password" class="form-control" id="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">{{ _("login_btn_submit") }}</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-12 text-center mt-3">
-        <img id="videoFeed" src="" width="640" height="480">
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
 </html>
