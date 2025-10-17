@@ -51,7 +51,7 @@ while True:
             count = 1
             time.sleep(60)
         take_photo(frame2)
-        count+=1
+        count += 1
     else:
         print("Sin movimiento... Valor:", average)
 

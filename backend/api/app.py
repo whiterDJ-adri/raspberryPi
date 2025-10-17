@@ -8,6 +8,8 @@ from routes.record_camera import record_cam_bp
 from routes.login import login_bp
 from routes.dashboard import dashboard_bp
 
+from services.remove_photos import detect_photos_exists
+
 app = Flask(__name__)
 
 # --- Mongo ---
@@ -38,9 +40,11 @@ def select_locale():
 babel = Babel(app, locale_selector=select_locale, timezone_selector="Europe/Madrid")
 
 
+
 # --- Rutas ---
 @app.route("/")
 def main():
+    detect_photos_exists()
     return render_template("index.html")
 
 
