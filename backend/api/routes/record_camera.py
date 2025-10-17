@@ -86,6 +86,13 @@ def media(filename):
     return send_from_directory(directory, filename, as_attachment=False)
 
 
+@record_cam_bp.route("/photos/removeAll", methods=["DELETE"])
+def clean_photos():
+    db = get_db_controller()
+    result = db.remove_all_photos()
+    return jsonify(result), result[1]
+
+
 """
 @record_cam_bp.route('/video')
 def real_streaming():
