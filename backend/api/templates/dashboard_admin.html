@@ -25,7 +25,7 @@
             <div class="ms-auto d-flex align-items-center gap-3">
                 <a href="/dashboard" class="btn btn-sm btn-outline-light" id="liveBtn">Página Principal</a>
                 <a href="/dashboard/admin/manage-users" class="btn btn-sm btn-outline-light" id="liveBtn">
-                    Panel de Administración
+                    {{ _("Panel de Administración") }}
                 </a>
                 <div class="me-3">
                     <a href="?lang=es" class="btn btn-sm btn-outline-light">ES</a>
@@ -57,12 +57,12 @@
                                 <input type="date" class="form-control" id="dateFilter">
                                 <button class="btn btn-outline-primary" type="button" id="applyDate"
                                     onclick="filterDate()">
-                                    {{ _("apply_filter") }}
+                                    {{ _("Aplicar") }}
                                 </button>
                             </div>
                         </div>
 
-                        <h6 class="text-muted mb-3">Acciones Rápidas</h6>
+                        <h6 class="text-muted mb-3">{{ _("Acciones Rápidas") }}</h6>
 
                         <div class="d-grid gap-2" id="adminControls">
 
@@ -100,7 +100,7 @@
 
                     <div class="card-body">
                         <div class="d-flex flex-wrap gap-3" id="gallery">
-                            <p class="text-muted" id="loadingMessage">Cargando fotos...</p>
+                            <p class="text-muted" id="loadingMessage">{{ _("Cargando fotos...") }}</p>
                         </div>
                     </div>
                 </div>
