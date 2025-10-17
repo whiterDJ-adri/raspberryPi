@@ -93,7 +93,7 @@ def clean_photos():
     return jsonify(result), result[1]
 
 
-"""
+
 @record_cam_bp.route('/video')
 def real_streaming():
     # Devuelve todas las imagenes del make_video al navegador, con el mimetype, se le indica el tipo de archivo que va a estar recibiendo
@@ -102,4 +102,4 @@ def real_streaming():
     # boundary=frame --> Separador entre cada mensaje, en este caso es frame
     return Response(video.make_video(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
-"""
+
