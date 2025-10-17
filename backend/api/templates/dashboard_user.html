@@ -1,16 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>{{ _("page_title_user") }}</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+			rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}" />
+		<script src="{{ url_for('static', filename='script.js') }}"></script>
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard User</title>
-    <script src="../static/script.js"></script>
-</head>
+	<body>
+		<!-- Header -->
+		<nav class="navbar navbar-expand-lg navbar-dark navbar-admin">
+			<div class="container-fluid px-4">
+				<a
+					class="navbar-brand"
+					href="#">
+					<i class="bi bi-camera-video me-2"></i>
+					{{ _("nav_camera_title") }}
+				</a>
+				<div class="ms-auto d-flex align-items-center gap-3">
+					<div class="me-3">
+						<a
+							href="?lang=es"
+							class="btn btn-sm btn-outline-light"
+							>ES</a
+						>
+						<a
+							href="?lang=ca"
+							class="btn btn-sm btn-outline-light"
+							>CA</a
+						>
+					</div>
+					<span
+						class="text-light me-3"
+						id="userInfo"
+						>{{ _("nav_user_info") }}:
+						<span id="userName">{{ _("nav_user_normal") }}</span></span
+					>
+					<button
+						class="btn btn-outline-light btn-sm hover-glow"
+						id="logoutBtn">
+						{{ _("nav_logout_btn") }}
+					</button>
+				</div>
+			</div>
+		</nav>
 
-<body>
-    <h1>Hola User</h1>
-    <button class="btn btn-outline-light btn-sm" id="logoutBtn">{{ _("nav_logout_btn") }}</button>
-</body>
+		<!-- Panel de Usuario -->
+		<div class="container-fluid mt-4 px-4">
+			<div class="row g-4">
+				<!-- Panel de Control -->
+				<div class="col-md-4">
+					<div class="admin-card">
+						<div class="card-header admin-card-header">
+							<h5 class="mb-0">{{ _("Panel de Control") }}</h5>
+						</div>
+						<div class="card-body p-4">
+							<div class="d-grid gap-3">
+								<button
+									class="btn admin-btn admin-btn-success"
+									id="streamingBtn"
+									onclick="streaming()">
+									<i class="bi bi-play-circle me-2"></i>{{
+									_("filter_btn_streaming") }}
+								</button>
 
+								<button
+									class="btn admin-btn admin-btn-secondary"
+									id="refreshBtn"
+									onclick="pedir_fotos()">
+									<i class="bi bi-arrow-clockwise me-2"></i>{{
+									_("filter_btn_refresh") }}
+								</button>
+
+								<div class="mb-3">
+									<label
+										for="dateFilterUser"
+										class="form-label fw-bold"
+										>{{ _("filter_date_label") }}</label
+									>
+									<div class="input-group">
+										<input
+											type="date"
+											class="form-control date-input"
+											id="dateFilterUser" />
+										<button
+											class="btn btn-outline-primary admin-btn"
+											type="button"
+											onclick="filterDate()">
+											<i class="bi bi-search"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Galería de Capturas -->
+				<div class="col-md-8">
+					<div class="admin-card">
+						<div
+							class="card-header admin-card-header d-flex justify-content-between align-items-center">
+							<h5 class="mb-0">{{ _("Capturas de Movimiento") }}</h5>
+							<span
+								class="badge rounded-pill photo-count-badge"
+								id="photoCount">
+								0 {{ _("list_photo_count_plural") }}
+							</span>
+						</div>
+						<div class="card-body p-4">
+							<div class="photo-gallery">
+								<div
+									class="d-flex flex-wrap gap-3"
+									id="gallery">
+									<p
+										class="text-muted loading-text"
+										id="loadingMessage">
+										{{ _("Cargando fotos...") }}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Transmisión en Vivo -->
+			<div class="row mt-4">
+				<div class="col-12">
+					<div class="admin-card">
+						<div class="card-header admin-card-header">
+							<h5 class="mb-0">{{ _("Transmisión en Vivo") }}</h5>
+						</div>
+						<div class="card-body p-4 text-center">
+							<div class="video-container d-inline-block">
+								<img
+									id="videoFeed"
+									src=""
+									class="video-feed"
+									alt="Video Feed"
+									style="display: none" />
+								<div
+									id="videoPlaceholder"
+									class="d-flex align-items-center justify-content-center"
+									style="
+										width: 640px;
+										height: 480px;
+										background: #f8f9fa;
+										border-radius: 8px;
+									">
+									<div class="text-center text-muted">
+										<i
+											class="bi bi-camera-video-off"
+											style="font-size: 4rem"></i>
+										<p class="mt-3">{{ _("Transmisión desactivada") }}</p>
+										<p class="small">
+											{{ _("Haz clic en 'Iniciar Transmisión' para ver el
+											video") }}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal para ver imágenes -->
+		<div
+			class="modal fade modal-custom"
+			id="imageModal"
+			tabindex="-1">
+			<div class="modal-dialog modal-xl modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5
+							class="modal-title"
+							id="modalTitle">
+							{{ _("modal_image_title") }}
+						</h5>
+						<button
+							type="button"
+							class="btn-close btn-close-white"
+							data-bs-dismiss="modal"></button>
+					</div>
+					<div class="modal-body text-center p-4">
+						<img
+							src=""
+							alt="{{ _('modal_image_alt') }}"
+							class="img-fluid"
+							id="modalImage"
+							style="border-radius: 8px" />
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary admin-btn"
+							data-bs-dismiss="modal">
+							{{ _("modal_btn_close") }}
+						</button>
+						<a
+							href="#"
+							class="btn btn-primary admin-btn"
+							id="downloadBtn"
+							download
+							>{{ _("modal_btn_download") }}</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
 </html>

@@ -1,6 +1,6 @@
 /* ===================================
    CÁMARA DE SEGURIDAD - RASPBERRY PI
-   Estilos principales para index.html
+   Estilos principales
    =================================== */
 
 /* Variables CSS */
@@ -14,6 +14,10 @@
 	--warning-color: #ffc107;
 	--danger-color: #dc3545;
 	--info-color: #17a2b8;
+	--primary-color: #667eea;
+	--secondary-color: #764ba2;
+	--dark-bg: #212529;
+	--light-bg: #f8f9fa;
 	--shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
 	--shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.15);
 	--border-radius: 12px;
@@ -295,4 +299,208 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
 	background: rgba(255, 255, 255, 0.5);
+}
+
+/* ===================================
+   DASHBOARD ADMIN STYLES
+   =================================== */
+
+/* Navbar personalizada para dashboard */
+.navbar-admin {
+	background: var(--dark-bg) !important;
+	box-shadow: var(--shadow-light);
+	border-bottom: 2px solid var(--primary-color);
+}
+
+.navbar-admin .navbar-brand {
+	font-weight: 600;
+	color: var(--text-primary) !important;
+}
+
+.navbar-admin .btn-outline-light:hover {
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+	transform: translateY(-1px);
+	transition: var(--transition-smooth);
+}
+
+/* Cards mejoradas para dashboard */
+.admin-card {
+	background: var(--light-bg);
+	border: none;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-light);
+	transition: var(--transition-smooth);
+}
+
+.admin-card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-medium);
+}
+
+.admin-card-header {
+	background: var(--primary-gradient) !important;
+	color: var(--text-primary);
+	border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+	font-weight: 600;
+	padding: 1rem 1.5rem !important;
+}
+
+/* Botones del panel admin */
+.admin-btn {
+	border-radius: 8px;
+	font-weight: 500;
+	transition: var(--transition-smooth);
+	border: none;
+}
+
+.admin-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-light);
+}
+
+.admin-btn-success {
+	background-color: var(--success-color);
+	color: white;
+}
+
+.admin-btn-success:hover {
+	background-color: #218838;
+}
+
+.admin-btn-secondary {
+	background-color: #6c757d;
+	color: white;
+}
+
+.admin-btn-secondary:hover {
+	background-color: #545b62;
+}
+
+.admin-btn-danger {
+	background-color: var(--danger-color);
+	color: white;
+}
+
+.admin-btn-danger:hover {
+	background-color: #c82333;
+}
+
+.admin-btn-warning {
+	background-color: var(--warning-color);
+	color: #212529;
+}
+
+.admin-btn-warning:hover {
+	background-color: #e0a800;
+}
+
+/* Galería de fotos */
+.photo-gallery {
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.photo-item {
+	position: relative;
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	transition: var(--transition-smooth);
+	box-shadow: var(--shadow-light);
+}
+
+.photo-item:hover {
+	transform: scale(1.05);
+	box-shadow: var(--shadow-medium);
+}
+
+.photo-item img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+/* Filtros sticky */
+.filter-sidebar {
+	position: sticky;
+	top: 1rem;
+}
+
+/* Input personalizado para fechas */
+.date-input {
+	border-radius: 8px;
+	border: 2px solid #e9ecef;
+	transition: var(--transition-smooth);
+}
+
+.date-input:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
+
+/* Badge personalizado */
+.photo-count-badge {
+	background: var(--primary-gradient) !important;
+	color: var(--text-primary);
+	font-weight: 500;
+}
+
+/* Modal mejorado */
+.modal-custom .modal-content {
+	border: none;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow-medium);
+}
+
+.modal-custom .modal-header {
+	background: var(--primary-gradient);
+	color: var(--text-primary);
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Video feed */
+.video-container {
+	background: var(--dark-bg);
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	box-shadow: var(--shadow-medium);
+}
+
+.video-feed {
+	width: 100%;
+	height: auto;
+	max-width: 640px;
+	border-radius: var(--border-radius);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.filter-sidebar {
+		position: relative;
+		top: 0;
+	}
+
+	.photo-gallery {
+		max-height: 50vh;
+	}
+
+	.admin-card {
+		margin-bottom: 1rem;
+	}
+}
+
+/* Loading animation */
+.loading-text {
+	color: #6c757d;
+	font-style: italic;
+	animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+	from {
+		opacity: 0.6;
+	}
+	to {
+		opacity: 1;
+	}
 }
