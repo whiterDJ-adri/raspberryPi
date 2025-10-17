@@ -28,7 +28,7 @@ async function pedir_fotos() {
     }
 }
 
-async function streaming(){
+function streaming(){
     document.getElementById('videoFeed').src = '/api/photo/video';
 }
 
