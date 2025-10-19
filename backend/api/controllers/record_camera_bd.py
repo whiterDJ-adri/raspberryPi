@@ -68,3 +68,32 @@ class RecordCameraController:
             return {"msg": "All photos removed"}, 200
         except Exception as e:
             return {"error": f"Unexpected error: {str(e)}"}, 500
+
+    def remove_photos_by_date(self, date_str):
+        try:
+            # Convertir la fecha del formato YYYY-MM-DD a YYYYMMDD que es como esta en la BD
+            if "-" in date_str:
+                date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+                date_formatted = date_obj.strftime("%Y%m%d")
+            else:
+                date_formatted = date_str
+
+            print(f"Eliminando fotos con fecha: {date_formatted}")
+
+            # Crear expresión regular para buscar fechas que comiencen con el patrón
+            date_pattern = f"^{date_formatted}"
+
+            # Eliminar fotos que coincidan con el patrón de fecha
+            result = self.collection.delete_many({"date": {"$regex": date_pattern}})
+
+            print(f"Fotos eliminadas para {date_formatted}: {result.deleted_count}")
+
+            if result.deleted_count > 0:
+                return {
+                    "msg": f"Se eliminaron {result.deleted_count} fotos del {date_str}"
+                }, 200
+            else:
+                return {"msg": f"No se encontraron fotos para la fecha {date_str}"}, 404
+
+        except Exception as e:
+            return {"error": f"Error al eliminar fotos: {str(e)}"}, 500

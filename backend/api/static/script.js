@@ -49,12 +49,12 @@ function streaming() {
 	// document.getElementById("videoFeed").src = "/api/photo/video";
 
 	const videoFeed = document.getElementById("videoFeed");
-    const placeholder = document.getElementById("videoPlaceholder");
+	const placeholder = document.getElementById("videoPlaceholder");
 	const text = document.getElementById('textVideo');
 
-    videoFeed.src = "/api/photo/video"; 
+	videoFeed.src = "/api/photo/video";
     videoFeed.style.display = 'block'; 
-    placeholder.classList.add("d-none");
+	placeholder.classList.add("d-none");
 }
 
 async function filterDate() {
@@ -113,43 +113,50 @@ async function deleteAllPhotos() {
 }
 
 async function eliminarFotoPorFecha() {
-    const dateInput = document.getElementById("dateFilter").value;
-    if (!dateInput) {
-        alert("Por favor, selecciona una fecha");
-        return;
-    }
-    if (!confirm(`¿Seguro que quieres eliminar todas las fotos del ${dateInput}?`)) return;
+	const dateInput = document.getElementById("dateFilter").value;
+	if (!dateInput) {
+		alert("Por favor, selecciona una fecha");
+		return;
+	}
+	if (
+		!confirm(`¿Seguro que quieres eliminar todas las fotos del ${dateInput}?`)
+	)
+		return;
 
-    try {
+	try {
+		const encodedDate = encodeURIComponent(dateInput);
+		const res = await fetch(`/api/photo/photos/removeByDate/${encodedDate}`, {
+			method: "DELETE",
+		});
 
-        const encodedDate = encodeURIComponent(dateInput);
-        const res = await fetch(`/api/photo/photos/removeByDate/${encodedDate}`, { method: "DELETE" });
+		if (!res.ok) {
+			// intentar leer mensaje de error si viene en json/text
+			let mensajeError = "";
+			try {
+				const t = await res.text();
+				mensajeError = t || res.statusText;
+			} catch {
+				mensajeError = res.statusText;
+			}
+			alert(`No se pudieron eliminar las fotos: ${mensajeError}`);
+			return;
+		}
 
-        if (!res.ok) {
-            
-            // intentar leer mensaje de error si viene en json/text
-            let mensajeError = "";
-            try {
-            const t = await res.text();
-            mensajeError = t || res.statusText;
-            } catch {
-            mensajeError = res.statusText;
-            }
-            alert(`No se pudieron eliminar las fotos: ${mensajeError}`);
-            return;
-        }
+		// leer posible mensaje de respuesta
+		let result = null;
+		try {
+			result = await res.json();
+		} catch (error) {
+			console.error("Error al parsear JSON de respuesta:", error);
+		}
 
-        // leer posible mensaje de respuesta
-        let result = null;
-        try {
-            result = await res.json();
-        } catch (error) {
-            error.console.error("Error al parsear JSON de respuesta:", error);
-        }
-
-        alert(result && result.message ? result.message : `Fotos del ${dateInput} eliminadas`);
-        await pedir_fotos();
-    } catch (err) {
-        console.error("Error: ", err);
-    }
+		alert(
+			result && result.message
+				? result.message
+				: `Fotos del ${dateInput} eliminadas`
+		);
+		await pedir_fotos();
+	} catch (err) {
+		console.error("Error: ", err);
+	}
 }

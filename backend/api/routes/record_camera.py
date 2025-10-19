@@ -93,6 +93,15 @@ def clean_photos():
     return jsonify(result), result[1]
 
 
+@record_cam_bp.route("/photos/removeByDate/<date>", methods=["DELETE"])
+def remove_photos_by_date(date):
+    try:
+        db = get_db_controller()
+        result = db.remove_photos_by_date(date)
+        return jsonify(result), result[1]
+    except Exception as e:
+        return jsonify({"error": f"Error en el servidor: {str(e)}"}), 500
+
 
 @record_cam_bp.route('/video')
 def real_streaming():
