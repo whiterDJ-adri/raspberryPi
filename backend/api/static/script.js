@@ -124,8 +124,8 @@ function streaming() {
 		streamBtn.disabled = false;
 		videoFeed.style.display = "none";
 		placeholder.classList.remove("d-none");
-		videoFeed.src = ""; // Detener la carga del video
-		videoFeed.onload = null; // Limpiar eventos
+		videoFeed.src = ""; 
+		videoFeed.onload = null;
 		videoFeed.onerror = null;
 		streamingActive = false;
 	}
