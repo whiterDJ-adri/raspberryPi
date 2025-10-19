@@ -45,8 +45,16 @@ async function pedir_fotos() {
 	}
 }
 
-async function streaming() {
-	document.getElementById("videoFeed").src = "/api/photo/video";
+function streaming() {
+	// document.getElementById("videoFeed").src = "/api/photo/video";
+
+	const videoFeed = document.getElementById("videoFeed");
+    const placeholder = document.getElementById("videoPlaceholder");
+	const text = document.getElementById('textVideo');
+
+    videoFeed.src = "/api/photo/video"; 
+    videoFeed.style.display = 'block'; 
+    placeholder.classList.add("d-none");
 }
 
 async function filterDate() {
