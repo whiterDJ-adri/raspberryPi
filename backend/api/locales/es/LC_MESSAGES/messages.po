@@ -309,3 +309,28 @@ msgstr "Tomar instantánea"
 #~ msgid "Haz clic en 'Iniciar Transmisión' para ver el video"
 #~ msgstr "Haz clic en 'Iniciar Transmisión' para ver el video"
 
+# === TRADUCCIONES PARA PÁGINAS DE ERROR ===
+msgid "Error"
+msgstr "Error"
+
+msgid "La página que buscas no existe."
+msgstr "La página que buscas no existe."
+
+msgid "Puede que la URL esté mal escrita o que la página haya sido movida."
+msgstr "Puede que la URL esté mal escrita o que la página haya sido movida."
+
+msgid "Error interno del servidor."
+msgstr "Error interno del servidor."
+
+msgid "Algo salió mal en nuestro servidor. Nuestro equipo ha sido notificado y está trabajando para solucionarlo."
+msgstr "Algo salió mal en nuestro servidor. Nuestro equipo ha sido notificado y está trabajando para solucionarlo."
+
+msgid "Ha ocurrido un error inesperado."
+msgstr "Ha ocurrido un error inesperado."
+
+msgid "Por favor, inténtalo de nuevo más tarde o contacta al administrador."
+msgstr "Por favor, inténtalo de nuevo más tarde o contacta al administrador."
+
+msgid "Volver al inicio"
+msgstr "Volver al inicio"
+

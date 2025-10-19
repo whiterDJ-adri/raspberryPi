@@ -306,3 +306,28 @@ msgstr "Tomar instantánea"
 #~ msgid "Haz clic en 'Iniciar Transmisión' para ver el video"
 #~ msgstr "Fes clic a 'Iniciar Transmissió' per veure el vídeo"
 
+# === TRADUCCIONS PER PÀGINES D'ERROR ===
+msgid "Error"
+msgstr "Error"
+
+msgid "La página que buscas no existe."
+msgstr "La pàgina que cerques no existeix."
+
+msgid "Puede que la URL esté mal escrita o que la página haya sido movida."
+msgstr "Pot ser que la URL estigui mal escrita o que la pàgina hagi estat moguda."
+
+msgid "Error interno del servidor."
+msgstr "Error intern del servidor."
+
+msgid "Algo salió mal en nuestro servidor. Nuestro equipo ha sido notificado y está trabajando para solucionarlo."
+msgstr "Alguna cosa ha anat malament al nostre servidor. El nostre equip ha estat notificat i està treballant per solucionar-ho."
+
+msgid "Ha ocurrido un error inesperado."
+msgstr "Ha ocorregut un error inesperat."
+
+msgid "Por favor, inténtalo de nuevo más tarde o contacta al administrador."
+msgstr "Si us plau, intenta-ho de nou més tard o contacta amb l'administrador."
+
+msgid "Volver al inicio"
+msgstr "Tornar a l'inici"
+
