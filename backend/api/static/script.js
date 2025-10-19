@@ -45,7 +45,7 @@ async function pedir_fotos() {
 		});
 
 		rutas.forEach((r) => {
-			gallery.innerHTML += `<img src="${r}" class="w-25" />`;
+			gallery.innerHTML += `<img src="${r}" class="w-25" onerror="this.style.display='none'" />`;
 		});
 
 		// Para cambiar el contrador de las fotos
