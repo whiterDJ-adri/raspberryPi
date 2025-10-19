@@ -533,37 +533,37 @@ Se ha actualizado completamente la página de error para incluir:
 ```html
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<title>{{ _('Error') }} {{ error_code }}</title>
-		<!-- Meta tags responsive y charset UTF-8 -->
-	</head>
-	<body>
-		<div class="error-container">
-			<div class="error-icon">⚠️</div>
-			<h1 class="error-code">{{ error_code }}</h1>
+ <head>
+  <title>{{ _('Error') }} {{ error_code }}</title>
+  <!-- Meta tags responsive y charset UTF-8 -->
+ </head>
+ <body>
+  <div class="error-container">
+   <div class="error-icon">⚠️</div>
+   <h1 class="error-code">{{ error_code }}</h1>
 
-			<!-- Mensajes específicos por código de error -->
-			{% if error_code == 404 %}
-			<p class="error-message">{{ _('La página que buscas no existe.') }}</p>
-			<div class="error-details">
-				{{ _('Puede que la URL esté mal escrita o que la página haya sido
-				movida.') }}
-			</div>
-			{% elif error_code == 500 %}
-			<p class="error-message">{{ _('Error interno del servidor.') }}</p>
-			<div class="error-details">
-				{{ _('Algo salió mal en nuestro servidor. Nuestro equipo ha sido
-				notificado...') }}
-			</div>
-			{% endif %}
+   <!-- Mensajes específicos por código de error -->
+   {% if error_code == 404 %}
+   <p class="error-message">{{ _('La página que buscas no existe.') }}</p>
+   <div class="error-details">
+    {{ _('Puede que la URL esté mal escrita o que la página haya sido
+    movida.') }}
+   </div>
+   {% elif error_code == 500 %}
+   <p class="error-message">{{ _('Error interno del servidor.') }}</p>
+   <div class="error-details">
+    {{ _('Algo salió mal en nuestro servidor. Nuestro equipo ha sido
+    notificado...') }}
+   </div>
+   {% endif %}
 
-			<a
-				href="/"
-				class="back-button"
-				>{{ _('Volver al inicio') }}</a
-			>
-		</div>
-	</body>
+   <a
+    href="/"
+    class="back-button"
+    >{{ _('Volver al inicio') }}</a
+   >
+  </div>
+ </body>
 </html>
 ```
 
@@ -573,13 +573,13 @@ Se ha actualizado completamente la página de error para incluir:
 
    ```css
    @media (max-width: 600px) {
-   	.error-container {
-   		margin: 20px;
-   		padding: 15px;
-   	}
-   	.error-code {
-   		font-size: 56px;
-   	}
+    .error-container {
+     margin: 20px;
+     padding: 15px;
+    }
+    .error-code {
+     font-size: 56px;
+    }
    }
    ```
 
