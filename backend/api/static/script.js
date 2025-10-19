@@ -54,7 +54,7 @@ function streaming() {
 	videoFeed.src = "/api/photo/video";
     videoFeed.style.display = 'block'; 
 	placeholder.classList.add("d-none");
-	
+
 	const streamBtn = document.getElementById("straming") || document.getElementById("streamingBtn");
 
 	if(!streamingActive){
@@ -71,7 +71,7 @@ function streaming() {
 		streamingActive = false;
 	}
 
->>>>>>> bcd1539e1009e9e99339cde6b097150fa0c5dc22
+
 }
 
 async function filterDate() {
