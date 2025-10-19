@@ -1,6 +1,5 @@
 import cv2
 
-video = cv2.VideoCapture(0)
 
 # def make_video():
 #     while(True):
@@ -19,6 +18,7 @@ video = cv2.VideoCapture(0)
 #        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 def make_video():
+    video = cv2.VideoCapture(0)
     if not video.isOpened():
         print("❌ No se pudo abrir la cámara")
         return

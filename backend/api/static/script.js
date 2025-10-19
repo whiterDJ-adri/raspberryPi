@@ -69,7 +69,7 @@ function streaming() {
 	// Verificar que los elementos existen
 	if (!videoFeed || !placeholder || !streamBtn) {
 		console.error(
-			"❌ No se encontraron los elementos necesarios para el streaming"
+			"No se encontraron los elementos necesarios para el streaming"
 		);
 		alert("Error: No se encontraron los elementos de video en la página");
 		return;
@@ -77,7 +77,7 @@ function streaming() {
 
 	if (!streamingActive) {
 		// Iniciar streaming
-		console.log("🎥 Iniciando streaming...");
+		console.log("Iniciando streaming...");
 
 		// Cambiar botón antes de cargar el video
 		streamBtn.innerHTML =
@@ -86,14 +86,14 @@ function streaming() {
 
 		// Configurar eventos del video
 		videoFeed.onload = () => {
-			console.log("✅ Stream conectado correctamente");
+			console.log("Stream conectado correctamente");
 			streamBtn.innerHTML =
 				'<i class="bi bi-pause-circle me-2"></i>Pausar Transmisión';
 			streamBtn.disabled = false;
 		};
 
 		videoFeed.onerror = () => {
-			console.error("❌ Error al cargar el stream");
+			console.error("Error al cargar el stream");
 			streamBtn.innerHTML =
 				'<i class="bi bi-play-circle me-2"></i>Iniciar Transmisión';
 			streamBtn.disabled = false;
@@ -118,7 +118,7 @@ function streaming() {
 		}, 3000);
 	} else {
 		// Pausar streaming
-		console.log("⏸️ Pausando streaming...");
+		console.log("Pausando streaming...");
 		streamBtn.innerHTML =
 			'<i class="bi bi-play-circle me-2"></i>Iniciar Transmisión';
 		streamBtn.disabled = false;
