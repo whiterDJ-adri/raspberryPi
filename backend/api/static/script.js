@@ -45,9 +45,8 @@ async function pedir_fotos() {
 	}
 }
 
+let streamingActive = false;
 function streaming() {
-	// document.getElementById("videoFeed").src = "/api/photo/video";
-
 	const videoFeed = document.getElementById("videoFeed");
 	const placeholder = document.getElementById("videoPlaceholder");
 	const text = document.getElementById('textVideo');
@@ -55,6 +54,24 @@ function streaming() {
 	videoFeed.src = "/api/photo/video";
     videoFeed.style.display = 'block'; 
 	placeholder.classList.add("d-none");
+	
+	const streamBtn = document.getElementById("straming") || document.getElementById("streamingBtn");
+
+	if(!streamingActive){
+		streamBtn.innerHTML = '<i class="bi bi-pause-circle me-2"></i>Pausar Transmisión';
+		videoFeed.src = "/api/photo/video"; 
+		videoFeed.style.display = 'block'; 
+		placeholder.classList.add("d-none");
+		streamingActive = true;
+	}else{
+		streamBtn.innerHTML = '<i class="bi bi-play-circle me-2"></i>Iniciar Transmisión';
+		videoFeed.style.display = 'none';
+		placeholder.classList.remove("d-none");
+		videoFeed.src = ""; // Detener la carga del video
+		streamingActive = false;
+	}
+
+>>>>>>> bcd1539e1009e9e99339cde6b097150fa0c5dc22
 }
 
 async function filterDate() {
