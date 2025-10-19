@@ -5,6 +5,11 @@ from controllers.record_camera_bd import RecordCameraController
 current_dir = os.path.dirname(os.path.abspath(__file__))
 photos_dir = os.path.join(current_dir, "..", "media", "screenshots")
 photos_dir = os.path.abspath(photos_dir)
+
+if not os.path.exists(photos_dir):
+    os.makedirs(photos_dir)
+    print(f"Directorio creado: {photos_dir}")
+
 list_photos = os.listdir(photos_dir)
 
 
