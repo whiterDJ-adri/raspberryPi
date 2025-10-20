@@ -334,3 +334,73 @@ msgstr "Por favor, inténtalo de nuevo más tarde o contacta al administrador."
 msgid "Volver al inicio"
 msgstr "Volver al inicio"
 
+# User Management Translations
+msgid "user_management_title"
+msgstr "Gestión de Usuarios - Panel de Administración"
+
+msgid "nav_main_page"
+msgstr "Página Principal"
+
+msgid "nav_admin_panel"
+msgstr "Panel de Administración"
+
+msgid "user_list_title"
+msgstr "Lista de Usuarios"
+
+msgid "create_user_btn"
+msgstr "Crear Usuario"
+
+msgid "user_name_label"
+msgstr "Nombre"
+
+msgid "user_email_label"
+msgstr "Email"
+
+msgid "user_admin_label"
+msgstr "Administrador"
+
+msgid "user_actions_label"
+msgstr "Acciones"
+
+msgid "create_user_modal_title"
+msgstr "Crear Nuevo Usuario"
+
+msgid "modal_close_btn"
+msgstr "Cerrar"
+
+msgid "user_name_field"
+msgstr "Nombre"
+
+msgid "user_name_placeholder"
+msgstr "Ingrese el nombre del usuario"
+
+msgid "user_name_required"
+msgstr "El nombre es obligatorio"
+
+msgid "user_email_field"
+msgstr "Correo Electrónico"
+
+msgid "user_email_placeholder"
+msgstr "usuario@ejemplo.com"
+
+msgid "user_email_required"
+msgstr "El email es obligatorio y debe ser válido"
+
+msgid "user_password_field"
+msgstr "Contraseña"
+
+msgid "user_password_placeholder"
+msgstr "Ingrese una contraseña segura"
+
+msgid "user_password_required"
+msgstr "La contraseña es obligatoria"
+
+msgid "user_admin_switch"
+msgstr "Otorgar permisos de administrador"
+
+msgid "modal_cancel_btn"
+msgstr "Cancelar"
+
+msgid "modal_save_btn"
+msgstr "Guardar Usuario"
+

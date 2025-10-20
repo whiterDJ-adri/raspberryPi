@@ -708,3 +708,157 @@ body.dashboard-page {
 		opacity: 1;
 	}
 }
+
+/* ===================================
+	USER MANAGEMENT STYLES
+	=================================== */
+
+/* Admin Card específica para gestión de usuarios */
+.admin-card {
+	border: 1px solid var(--card-border);
+	background: var(--card-bg);
+	backdrop-filter: blur(10px);
+	border-radius: var(--border-radius-lg);
+	overflow: hidden;
+}
+
+.admin-card .card-header {
+	background: var(--primary-gradient) !important;
+	border: none;
+	padding: var(--spacer-4);
+}
+
+.admin-card .card-header h5 {
+	font-weight: 600;
+	font-size: var(--font-size-lg);
+	margin: 0;
+}
+
+/* Tabla de usuarios mejorada */
+.table-hover > tbody > tr:hover > td {
+	background-color: rgba(var(--bs-primary-rgb), 0.1);
+	transition: background-color 0.3s ease;
+}
+
+.table-group-divider {
+	border-top: 2px solid var(--bs-border-color);
+}
+
+/* Modal de crear usuario */
+.modal-content {
+	border-radius: var(--border-radius-lg);
+	overflow: hidden;
+}
+
+.modal-header.bg-gradient-primary {
+	background: var(--primary-gradient) !important;
+	border: none;
+}
+
+.modal-body {
+	background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.modal-footer.bg-light {
+	background: linear-gradient(145deg, #e9ecef 0%, #dee2e6 100%) !important;
+	border: none;
+}
+
+/* Form controls mejorados */
+.form-control-lg {
+	padding: 0.75rem 1rem;
+	font-size: var(--font-size-base);
+	border-radius: var(--border-radius);
+	border: 2px solid #e9ecef;
+	transition: all 0.3s ease;
+}
+
+.form-control-lg:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+	transform: translateY(-1px);
+}
+
+/* Form switch mejorado */
+.form-check-input:checked {
+	background-color: var(--primary-color);
+	border-color: var(--primary-color);
+}
+
+.form-check-input:focus {
+	box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Labels con iconos */
+.form-label {
+	font-weight: 600;
+	color: var(--dark-bg);
+	margin-bottom: 0.5rem;
+}
+
+.form-label i {
+	color: var(--primary-color);
+}
+
+/* User info en navbar */
+.user-info {
+	font-size: var(--font-size-sm);
+}
+
+.user-info .fw-bold {
+	color: var(--warning-color);
+}
+
+/* Language selector */
+.lang-selector .btn {
+	padding: 0.25rem 0.75rem;
+	margin: 0 0.125rem;
+	border-radius: var(--border-radius-sm);
+}
+
+/* Hover effects mejorados */
+.hover-glow:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--box-shadow-lg);
+	transition: all 0.3s ease;
+}
+
+/* Validación de formularios */
+.was-validated .form-control:valid,
+.form-control.is-valid {
+	border-color: var(--success-color);
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+	border-color: var(--danger-color);
+}
+
+.invalid-feedback {
+	display: block;
+	font-size: var(--font-size-sm);
+	color: var(--danger-color);
+	margin-top: 0.25rem;
+}
+
+/* Responsive adjustments para gestión de usuarios */
+@media (max-width: 768px) {
+	.admin-card .card-header {
+		padding: var(--spacer-3);
+		flex-direction: column;
+		gap: var(--spacer-2);
+	}
+
+	.modal-dialog {
+		margin: 0.5rem;
+	}
+
+	.table-responsive {
+		font-size: var(--font-size-sm);
+	}
+
+	.form-control-lg {
+		padding: 0.5rem 0.75rem;
+		font-size: var(--font-size-sm);
+	}
+}

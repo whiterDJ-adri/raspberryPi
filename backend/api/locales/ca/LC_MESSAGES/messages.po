@@ -331,3 +331,73 @@ msgstr "Si us plau, intenta-ho de nou més tard o contacta amb l'administrador."
 msgid "Volver al inicio"
 msgstr "Tornar a l'inici"
 
+# User Management Translations
+msgid "user_management_title"
+msgstr "Gestió d'Usuaris - Panell d'Administració"
+
+msgid "nav_main_page"
+msgstr "Pàgina Principal"
+
+msgid "nav_admin_panel"
+msgstr "Panell d'Administració"
+
+msgid "user_list_title"
+msgstr "Llista d'Usuaris"
+
+msgid "create_user_btn"
+msgstr "Crear Usuari"
+
+msgid "user_name_label"
+msgstr "Nom"
+
+msgid "user_email_label"
+msgstr "Correu"
+
+msgid "user_admin_label"
+msgstr "Administrador"
+
+msgid "user_actions_label"
+msgstr "Accions"
+
+msgid "create_user_modal_title"
+msgstr "Crear Nou Usuari"
+
+msgid "modal_close_btn"
+msgstr "Tancar"
+
+msgid "user_name_field"
+msgstr "Nom"
+
+msgid "user_name_placeholder"
+msgstr "Introdueix el nom de l'usuari"
+
+msgid "user_name_required"
+msgstr "El nom és obligatori"
+
+msgid "user_email_field"
+msgstr "Correu Electrònic"
+
+msgid "user_email_placeholder"
+msgstr "usuari@exemple.com"
+
+msgid "user_email_required"
+msgstr "El correu és obligatori i ha de ser vàlid"
+
+msgid "user_password_field"
+msgstr "Contrasenya"
+
+msgid "user_password_placeholder"
+msgstr "Introdueix una contrasenya segura"
+
+msgid "user_password_required"
+msgstr "La contrasenya és obligatòria"
+
+msgid "user_admin_switch"
+msgstr "Atorgar permisos d'administrador"
+
+msgid "modal_cancel_btn"
+msgstr "Cancel·lar"
+
+msgid "modal_save_btn"
+msgstr "Guardar Usuari"
+
