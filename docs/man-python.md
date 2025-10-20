@@ -31,11 +31,11 @@ cd backend; python -m venv .venv; .venv\Scripts\activate; pip install -r require
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Esta guía te ayudará a configurar correctamente el entorno Python para el proyecto de cámara de seguridad Raspberry Pi, desde la instalación inicial hasta la resolución de errores comunes.
 
-## ⚡ Configuración Inicial
+## Configuración Inicial
 
 ### 1. Requisitos Previos
 
@@ -58,13 +58,13 @@ python --version
 raspberryPi/
 ├── backend/
 │   ├── api/
-│   │   ├── app.py              # 🚀 Aplicación principal
-│   │   ├── requirements.txt    # 📦 Dependencias
-│   │   ├── config.ini          # ⚙️ Configuración
+│   │   ├── app.py              # Aplicación principal
+│   │   ├── requirements.txt    # Dependencias
+│   │   ├── config.ini          # Configuración
 │   │   └── ...
-│   ├── .venv/                  # 🐍 Entorno virtual (se crea)
+│   ├── .venv/                  # Entorno virtual (se crea)
 │   └── raspberry/
-│       └── main.py             # 📷 Script detección movimiento
+│       └── main.py             # Script detección movimiento
 ```
 
 ### 3. Configuración del Entorno Virtual
@@ -88,7 +88,7 @@ ls .venv/  # Debe mostrar: Include/ Lib/ Scripts/ pyvenv.cfg
 
 ---
 
-## 🔄 Activación del Entorno Virtual
+## Activación del Entorno Virtual
 
 ### Windows
 
@@ -130,7 +130,7 @@ where python    # Windows
 
 ---
 
-## 📦 Gestión de Dependencias
+## Gestión de Dependencias
 
 ### Instalación de Dependencias
 
@@ -173,7 +173,7 @@ pip freeze > requirements-freeze.txt
 
 ---
 
-## 🚀 Ejecución de la Aplicación
+## Ejecución de la Aplicación
 
 ### Modo Desarrollo
 
@@ -207,9 +207,9 @@ python main.py
 
 ---
 
-## 🔧 Mini-Manuales para Errores Comunes
+## Mini-Manuales para Errores Comunes
 
-### ❌ Error: "python: command not found"
+### Error: "python: command not found"
 
 **Síntomas:**
 
@@ -224,7 +224,7 @@ python --version
 2. **Python instalado como `python3`**
 3. **PATH no configurado**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Verificar instalación:**
 
@@ -253,7 +253,7 @@ sudo apt update && sudo apt install python3 python3-pip python3-venv
 
 ---
 
-### ❌ Error: "No module named 'flask'"
+### Error: "No module named 'flask'"
 
 **Síntomas:**
 
@@ -268,7 +268,7 @@ python app.py
 2. **Dependencias no instaladas**
 3. **Python usando sistema global**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Verificar entorno virtual:**
 
@@ -294,7 +294,7 @@ pip show flask
 
 ---
 
-### ❌ Error: "cannot import name 'app' from 'app'"
+### Error: "cannot import name 'app' from 'app'"
 
 **Síntomas:**
 
@@ -308,12 +308,12 @@ ImportError: cannot import name 'app' from 'app'
 1. **Importación circular**
 2. **Archivo mal estructurado**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Verificar estructura de app.py:**
 
 ```python
-# ✅ CORRECTO - app.py
+# CORRECTO - app.py
 from flask import Flask
 
 app = Flask(__name__)
@@ -326,18 +326,18 @@ if __name__ == '__main__':
 **2. Ejecutar desde directorio correcto:**
 
 ```bash
-# ✅ CORRECTO
+# CORRECTO
 cd backend/api
 python app.py
 
-# ❌ INCORRECTO
+# INCORRECTO
 cd backend
 python api/app.py  # Puede causar problemas de importación
 ```
 
 ---
 
-### ❌ Error: "Permission denied" al crear entorno virtual
+### Error: "Permission denied" al crear entorno virtual
 
 **Síntomas:**
 
@@ -352,7 +352,7 @@ python -m venv .venv
 2. **Directorio en uso**
 3. **Antivirus bloqueando**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Ejecutar como administrador (Windows):**
 
@@ -378,7 +378,7 @@ python -m venv proyecto-venv
 
 ---
 
-### ❌ Error: "opencv-python installation failed"
+### Error: "opencv-python installation failed"
 
 **Síntomas:**
 
@@ -393,7 +393,7 @@ pip install opencv-python-headless
 2. **Arquitectura incompatible**
 3. **Memoria insuficiente**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Instalar Microsoft Visual C++ (Windows):**
 
@@ -422,7 +422,7 @@ sudo swapon /swapfile
 
 ---
 
-## 🎯 Scripts de Automatización
+## Scripts de Automatización
 
 ### Script de Configuración Completa
 
@@ -436,7 +436,7 @@ python -m venv .venv
 call .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
-echo ✅ Configuración completada!
+echo Configuración completada!
 echo.
 echo Para activar el entorno: .venv\Scripts\activate
 echo Para ejecutar la app: python api/app.py
@@ -453,7 +453,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
-echo "✅ Configuración completada!"
+echo "Configuración completada!"
 echo ""
 echo "Para activar el entorno: source .venv/bin/activate"
 echo "Para ejecutar la app: python api/app.py"
@@ -563,9 +563,9 @@ print(f"OpenCV: {cv2.__version__}")
 
 ---
 
-## 📋 Checklist de Verificación
+## Checklist de Verificación
 
-### ✅ Antes de comenzar desarrollo
+### Antes de comenzar desarrollo
 
 - [ ] Python 3.8+ instalado
 - [ ] Entorno virtual creado en `.venv/`
@@ -574,7 +574,7 @@ print(f"OpenCV: {cv2.__version__}")
 - [ ] `python app.py` ejecuta sin errores
 - [ ] Navegador abre <http://localhost:5000>
 
-### ✅ Para deployment
+### Para deployment
 
 - [ ] requirements.txt actualizado
 - [ ] Variables de entorno configuradas
