@@ -1,6 +1,6 @@
-# 🔒 Guía Completa de Gestión Segura de Variables de Entorno
+# Guía Completa de Gestión Segura de Variables de Entorno
 
-## 🚀 Resumen Rápido
+## Resumen Rápido
 
 ### Comandos Esenciales
 
@@ -37,7 +37,7 @@ FLASK_ENV=development
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Esta guía te ayudará a configurar un sistema seguro de gestión de variables de entorno para el proyecto de cámara de seguridad, utilizando **Infisical** como servicio externo o métodos locales alternativos.
 
@@ -45,7 +45,7 @@ Esta guía te ayudará a configurar un sistema seguro de gestión de variables d
 
 ### Problemas de Seguridad Comunes
 
-❌ **MAL - Hardcoded en código:**
+**MAL - Hardcoded en código:**
 
 ```python
 # ¡NUNCA HAGAS ESTO!
@@ -53,7 +53,7 @@ MONGO_URL = "mongodb://admin:password123@localhost:27017/"
 DISCORD_WEBHOOK = "https://discord.com/api/webhooks/123456789/abcdef"
 ```
 
-❌ **MAL - Versionado en Git:**
+**MAL - Versionado en Git:**
 
 ```bash
 # ¡NUNCA subas esto a Git!
@@ -61,7 +61,7 @@ git add .env
 git commit -m "Añadidas credenciales"  # 🚨 PELIGRO
 ```
 
-✅ **BIEN - Variables de entorno:**
+**BIEN - Variables de entorno:**
 
 ```python
 import os
@@ -78,17 +78,17 @@ DISCORD_WEBHOOK = os.getenv('WEBHOOK_DISCORD')
 
 ---
 
-## 🌐 Método 1: Infisical (Recomendado para Equipos)
+## Método 1: Infisical (Recomendado para Equipos)
 
 ### ¿Qué es Infisical?
 
 [Infisical](https://infisical.com/) es una plataforma **open-source y gratuita** para gestión colaborativa de secretos que permite:
 
-- 🔄 Sincronización automática entre entornos
-- 👥 Gestión de permisos por equipo
-- 📱 Interfaz web intuitiva
-- 🔒 Encriptación end-to-end
-- 🚀 CLI integrado
+- Sincronización automática entre entornos
+- Gestión de permisos por equipo
+- Interfaz web intuitiva
+- Encriptación end-to-end
+- CLI integrado
 
 ### Configuración Paso a Paso
 
@@ -195,7 +195,7 @@ infisical shell --env=dev
 
 ---
 
-## 🏠 Método 2: Archivo .env Local (Para Desarrollo Individual)
+## Método 2: Archivo .env Local (Para Desarrollo Individual)
 
 ### Configuración con python-dotenv
 
@@ -281,7 +281,7 @@ __pycache__/
 
 ## 🔧 Mini-Manuales para Errores Comunes
 
-### ❌ Error: "infisical: command not found"
+### Error: "infisical: command not found"
 
 **Síntomas:**
 
@@ -296,7 +296,7 @@ infisical --version
 2. **PATH no configurado**
 3. **Terminal no reiniciada**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Verificar instalación:**
 
@@ -332,7 +332,7 @@ source ~/.bashrc  # Unix
 
 ---
 
-### ❌ Error: "Authentication failed"
+### Error: "Authentication failed"
 
 **Síntomas:**
 
@@ -347,7 +347,7 @@ infisical secrets list
 2. **Credenciales incorrectas**
 3. **Proyecto no accesible**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Re-autenticar:**
 
@@ -373,7 +373,7 @@ infisical init
 
 ---
 
-### ❌ Error: "ModuleNotFoundError: No module named 'dotenv'"
+### Error: "ModuleNotFoundError: No module named 'dotenv'"
 
 **Síntomas:**
 
@@ -387,7 +387,7 @@ from dotenv import load_dotenv
 1. **python-dotenv no instalado**
 2. **Entorno virtual incorrecto**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Instalar dependencia:**
 
@@ -412,7 +412,7 @@ except ImportError:
 
 ---
 
-### ❌ Error: Variables no se cargan correctamente
+### Error: Variables no se cargan correctamente
 
 **Síntomas:**
 
@@ -427,7 +427,7 @@ print(os.getenv('URL_MONGO'))
 2. **load_dotenv() no llamado**
 3. **Sintaxis incorrecta en .env**
 
-**✅ Soluciones:**
+**Soluciones:**
 
 **1. Verificar ubicación de .env:**
 
@@ -457,18 +457,18 @@ print("Variables cargadas:", list(os.environ.keys()))
 **3. Verificar sintaxis de .env:**
 
 ```env
-# ✅ CORRECTO
+# CORRECTO
 URL_MONGO=mongodb://localhost:27017/db
 SECRET_KEY=mi-clave-secreta
 
-# ❌ INCORRECTO
+# INCORRECTO
 URL_MONGO = mongodb://localhost:27017/db  # Espacios problemáticos
 SECRET_KEY="mi clave con espacios"        # Comillas innecesarias
 ```
 
 ---
 
-## 🛡️ Mejores Prácticas de Seguridad
+## Mejores Prácticas de Seguridad
 
 ### Generación de Claves Seguras
 
@@ -516,7 +516,7 @@ if missing_vars:
 
 ---
 
-## 🔍 Herramientas de Debugging
+## Herramientas de Debugging
 
 ### Script de Verificación de Variables
 
@@ -579,9 +579,9 @@ python check_env.py
 
 ---
 
-## 📋 Checklist de Configuración
+## Checklist de Configuración
 
-### ✅ Para Desarrollo Local
+### Para Desarrollo Local
 
 - [ ] Infisical CLI instalado y configurado, O archivo .env creado
 - [ ] Todas las variables requeridas configuradas
@@ -589,14 +589,14 @@ python check_env.py
 - [ ] Script de verificación ejecutado sin errores
 - [ ] Aplicación se ejecuta correctamente
 
-### ✅ Para Deployment
+### Para Deployment
 
 - [ ] Variables de producción configuradas por separado
 - [ ] Credenciales de producción diferentes a desarrollo
 - [ ] Backup de configuración en lugar seguro
 - [ ] Accesos de equipo configurados correctamente
 
-### ✅ Para Seguridad
+### Para Seguridad
 
 - [ ] Claves generadas aleatoriamente (no palabras comunes)
 - [ ] Permisos mínimos necesarios en base de datos
@@ -605,7 +605,7 @@ python check_env.py
 
 ---
 
-## 📚 Recursos Adicionales
+## Recursos Adicionales
 
 ### Herramientas Alternativas
 
@@ -630,7 +630,7 @@ python check_env.py
 
 ---
 
-## 💡 Consejos Finales
+## Consejos Finales
 
 1. **Nunca hardcodees secretos**: Siempre usa variables de entorno
 2. **Separa entornos**: Diferentes credenciales para dev/staging/prod  
