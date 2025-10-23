@@ -11,28 +11,28 @@ def make_video():
     try:
         video = cv2.VideoCapture(0)
         if not video.isOpened():
-            print("❌ No se pudo abrir la cámara")
+            print("No se pudo abrir la cámara")
             return
 
-        print("✅ Cámara abierta correctamente")
+        print("Cámara abierta correctamente")
 
         while True:
             try:
                 ret, frame = video.read()
                 if not ret:
-                    print("⚠️ No se pudo leer un frame")
+                    print("No se pudo leer un frame")
                     break
 
                 # Verificar que el frame no esté vacío
                 if frame is None or frame.size == 0:
-                    print("⚠️ Frame vacío recibido")
+                    print("Frame vacío recibido")
                     continue
 
                 # print("📸 Frame capturado")  # Puedes dejarlo activo para ver en la terminal
 
                 ret, buffer = cv2.imencode(".jpg", frame)
                 if not ret:
-                    print("⚠️ Error al codificar frame")
+                    print("Error al codificar frame")
                     continue
 
                 frame = buffer.tobytes()
@@ -49,4 +49,4 @@ def make_video():
         # Asegurar que la cámara se libera siempre
         if video is not None and video.isOpened():
             video.release()
-            print("🔓 Cámara liberada correctamente")
+            print("Cámara liberada correctamente")

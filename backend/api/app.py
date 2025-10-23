@@ -45,8 +45,8 @@ try:
         except Exception:
             raise Exception("No se pudo verificar la conexión a MongoDB")
 except Exception as e:
-    print(f"❌ Error al conectar con MongoDB: {e}")
-    print("💡 Verifica que:")
+    print(f"Error al conectar con MongoDB: {e}")
+    print("Verifica que:")
     print("   - La variable URL_MONGO esté configurada correctamente")
     print("   - MongoDB esté ejecutándose")
     print("   - Las credenciales sean correctas")
